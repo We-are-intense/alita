@@ -2,13 +2,16 @@ import 'dart:io';
 import 'dart:convert';
 import 'package:analyzer/dart/analysis/features.dart';
 import 'package:analyzer/dart/analysis/utilities.dart';
-import 'package:analyzer/dart/ast/visitor.dart';
-import 'package:analyzer/dart/ast/ast.dart';
 import 'package:args/args.dart';
 import 'DartAstParser.dart';
 void main(List<String> arguments) async {
-  arguments = ["-f", "./testfile/test.dart"];
-  print(arguments);
+  String path = Platform.script.toFilePath();
+  List<String> sps = path.split("/");
+  sps.removeLast();sps.removeLast();
+  path = sps.join("/");
+
+  arguments = ["-f", path +"/testfile/test.dart"];
+  print(path);
   final parser = ArgParser()..addFlag("file", negatable: false, abbr: 'f');
   var argResults = parser.parse(arguments);
   final paths = argResults.rest;
@@ -17,8 +20,6 @@ void main(List<String> arguments) async {
   } else {
     var ast = await generate(paths[0]);
   }
-
-
 }
 
 //生成AST
@@ -32,7 +33,7 @@ Future generate(String path) async {
         print(path);
         var parseResult =
             // ignore: deprecated_member_use
-            parseFile(path: "/Users/xiaerfei762/Documents/study/dart/dartAst/testfile/uitest.dart", featureSet: FeatureSet.fromEnableFlags([]));
+            parseFile(path: path, featureSet: FeatureSet.fromEnableFlags([]));
         var compilationUnit = parseResult.unit;
         //遍历AST
         var astData = compilationUnit.accept(DartAstParser());
