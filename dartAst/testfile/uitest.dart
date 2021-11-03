@@ -34,7 +34,7 @@ class WebEntry extends StatelessWidget {
     return Row(
       mainAxisSize: MainAxisSize.max,
       children: [
-        const Text("hell world"),
+        const Text("hell world", style: TextStyle(color: Colors.red),),
         const Text("你好！"),
       ],
     );

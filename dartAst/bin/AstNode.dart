@@ -1,4 +1,3 @@
-
 import 'AstVisitor.dart';
 
 class AstNode {
@@ -48,7 +47,8 @@ class BooleanLiteral extends Expression {
 
 class Variable extends Expression {
   String name;
-  Variable(this.name);
+  String type;
+  Variable(this.name, this.type);
   @override
   accept(AstVisitor visitor, {additional}) {
     return visitor.visitVariable(this, additional: additional);
@@ -77,10 +77,21 @@ class Unary extends Expression {
   }
 }
 
+class NamedExpression extends Expression {
+  String? name;
+  Expression exp;
+  NamedExpression(this.name ,this.exp);
+  @override
+  accept(AstVisitor visitor, {additional}) {
+    return visitor.visitNamedExpression(this, additional: additional);
+  }
+}
+
 class FunctionCall extends Expression {
   String name;
   List<Expression>? parameters;
-  FunctionCall(this.name, this.parameters);
+  Expression callee;
+  FunctionCall(this.name, this.parameters, this.callee);
   @override
   accept(AstVisitor visitor, {additional}) {
     return visitor.visitFunctionCall(this, additional: additional);
@@ -110,7 +121,7 @@ class BlockStatement extends Statement {
 
 class FunctionDecl extends Statement {
   String name;
-  List<VariableDecl>? parameters;
+  List<Variable>? parameters;
   String returnType;
   BlockStatement blockStmt;
   FunctionDecl(this.name, this.parameters, this.returnType, this.blockStmt);
@@ -153,7 +164,7 @@ class ForStatement extends Statement {
   Expression? init;
   Expression? condition;
   Expression? updaters;
-  List<Statement> body;
+  BlockStatement body;
   ForStatement(this.init, this.condition, this.updaters, this.body);
   @override
   accept(AstVisitor visitor, {additional}) {
@@ -161,5 +172,11 @@ class ForStatement extends Statement {
   }
 }
 
-
+class ClassDeclaration extends Statement {
+  String name;
+  String superName;
+  List<VariableDecl> fields;
+  List<FunctionDecl> methods;
+  ClassDeclaration(this.name, this.superName, this.fields, this.methods);
+}
 

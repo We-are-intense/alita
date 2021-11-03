@@ -22,11 +22,14 @@ class AstVisitor {
   
   dynamic visitFunctionCall(FunctionCall node, {dynamic additional}) {
     if(node.parameters == null) return null;
+    visit(node.callee, additional: additional);
     for (Expression item in node.parameters!) {
       visit(item, additional: additional);  
     }
     return null;
   }
+  dynamic visitNamedExpression(NamedExpression node, {dynamic additional}) => visit(node.exp, additional: additional);
+
   // Statement
   
   dynamic visitVariableDecl(VariableDecl node, {dynamic additional}) {
@@ -44,7 +47,7 @@ class AstVisitor {
 
   dynamic visitFunctionDecl(FunctionDecl node, {dynamic additional}) {
     if(node.parameters != null) {
-      for (VariableDecl item in node.parameters!) {
+      for (Variable item in node.parameters!) {
         visit(item, additional: additional);  
       }
     }
@@ -77,16 +80,7 @@ class AstVisitor {
     if(node.updaters != null) {
       visit(node.updaters!, additional: additional);
     }
-
-    for (Statement item in node.body) {
-      visit(item, additional: additional);
-    }
+    visit(node.body, additional: additional);
     return null;
   }
-  
-
-  
-
-
-
 }

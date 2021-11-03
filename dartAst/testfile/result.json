@@ -1,0 +1,620 @@
+{
+    "type": "Program",
+    "body": [
+        {
+            "type": "FunctionDeclaration",
+            "id": {
+                "type": "Identifier",
+                "name": "test"
+            },
+            "expression": {
+                "type": "FunctionExpression",
+                "parameters": {
+                    "type": "FormalParameterList",
+                    "parameterList": [
+                        {
+                            "type": "SimpleFormalParameter",
+                            "paramType": {
+                                "type": "TypeName",
+                                "name": "int"
+                            },
+                            "name": "a"
+                        },
+                        {
+                            "type": "SimpleFormalParameter",
+                            "paramType": {
+                                "type": "TypeName",
+                                "name": "String"
+                            },
+                            "name": "bb"
+                        }
+                    ]
+                },
+                "body": {
+                    "type": "BlockStatement",
+                    "body": [
+                        {
+                            "type": "VariableDeclarationList",
+                            "typeAnnotation": {
+                                "type": "TypeName",
+                                "name": "int"
+                            },
+                            "declarations": [
+                                {
+                                    "type": "VariableDeclarator",
+                                    "id": {
+                                        "type": "Identifier",
+                                        "name": "b"
+                                    },
+                                    "init": {
+                                        "type": "IntegerLiteral",
+                                        "value": 5
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "type": "VariableDeclarationList",
+                            "typeAnnotation": {
+                                "type": "TypeName",
+                                "name": "int"
+                            },
+                            "declarations": [
+                                {
+                                    "type": "VariableDeclarator",
+                                    "id": {
+                                        "type": "Identifier",
+                                        "name": "sum"
+                                    },
+                                    "init": {
+                                        "type": "BinaryExpression",
+                                        "operator": "+",
+                                        "left": {
+                                            "type": "Identifier",
+                                            "name": "a"
+                                        },
+                                        "right": {
+                                            "type": "BinaryExpression",
+                                            "operator": "*",
+                                            "left": {
+                                                "type": "Identifier",
+                                                "name": "b"
+                                            },
+                                            "right": {
+                                                "type": "IntegerLiteral",
+                                                "value": 3
+                                            }
+                                        }
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "type": "VariableDeclarationList",
+                            "typeAnnotation": {
+                                "type": "TypeName",
+                                "name": "String"
+                            },
+                            "declarations": [
+                                {
+                                    "type": "VariableDeclarator",
+                                    "id": {
+                                        "type": "Identifier",
+                                        "name": "ee"
+                                    },
+                                    "init": {
+                                        "type": "StringLiteral",
+                                        "value": "hello world!"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "type": "VariableDeclarationList",
+                            "typeAnnotation": {
+                                "type": "TypeName",
+                                "name": "List"
+                            },
+                            "declarations": [
+                                {
+                                    "type": "VariableDeclarator",
+                                    "id": {
+                                        "type": "Identifier",
+                                        "name": "dd"
+                                    },
+                                    "init": {
+                                        "type": "ListLiteral",
+                                        "value": [
+                                            {
+                                                "type": "IntegerLiteral",
+                                                "value": 1
+                                            },
+                                            {
+                                                "type": "IntegerLiteral",
+                                                "value": 2
+                                            },
+                                            {
+                                                "type": "IntegerLiteral",
+                                                "value": 3
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "type": "VariableDeclarationList",
+                            "typeAnnotation": {
+                                "type": "TypeName",
+                                "name": "int"
+                            },
+                            "declarations": [
+                                {
+                                    "type": "VariableDeclarator",
+                                    "id": {
+                                        "type": "Identifier",
+                                        "name": "len1"
+                                    },
+                                    "init": {
+                                        "type": "MethodInvocation",
+                                        "callee": {
+                                            "type": "MemberExpression",
+                                            "object": {
+                                                "type": "PropertyAccess",
+                                                "id": {
+                                                    "type": "Identifier",
+                                                    "name": "length"
+                                                },
+                                                "expression": {
+                                                    "type": "PrefixedIdentifier",
+                                                    "identifier": {
+                                                        "type": "Identifier",
+                                                        "name": "dd"
+                                                    },
+                                                    "prefix": {
+                                                        "type": "Identifier",
+                                                        "name": "aa"
+                                                    }
+                                                }
+                                            },
+                                            "property": {
+                                                "type": "Identifier",
+                                                "name": "toString"
+                                            }
+                                        },
+                                        "typeArguments": null,
+                                        "argumentList": {
+                                            "type": "ArgumentList",
+                                            "argumentList": []
+                                        }
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "type": "VariableDeclarationList",
+                            "typeAnnotation": {
+                                "type": "TypeName",
+                                "name": "int"
+                            },
+                            "declarations": [
+                                {
+                                    "type": "VariableDeclarator",
+                                    "id": {
+                                        "type": "Identifier",
+                                        "name": "len2"
+                                    },
+                                    "init": {
+                                        "type": "MethodInvocation",
+                                        "callee": {
+                                            "type": "MemberExpression",
+                                            "object": {
+                                                "type": "PropertyAccess",
+                                                "id": {
+                                                    "type": "Identifier",
+                                                    "name": "length"
+                                                },
+                                                "expression": {
+                                                    "type": "PropertyAccess",
+                                                    "id": {
+                                                        "type": "Identifier",
+                                                        "name": "dd"
+                                                    },
+                                                    "expression": {
+                                                        "type": "PropertyAccess",
+                                                        "id": {
+                                                            "type": "Identifier",
+                                                            "name": "this"
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "property": {
+                                                "type": "Identifier",
+                                                "name": "toString"
+                                            }
+                                        },
+                                        "typeArguments": null,
+                                        "argumentList": {
+                                            "type": "ArgumentList",
+                                            "argumentList": []
+                                        }
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "type": "ForStatement",
+                            "loop": {
+                                "init": {
+                                    "type": "VariableDeclarationList",
+                                    "typeAnnotation": null,
+                                    "declarations": [
+                                        {
+                                            "type": "VariableDeclarator",
+                                            "id": {
+                                                "type": "Identifier",
+                                                "name": "i"
+                                            },
+                                            "init": {
+                                                "type": "IntegerLiteral",
+                                                "value": 0
+                                            }
+                                        }
+                                    ]
+                                },
+                                "condition": {
+                                    "type": "BinaryExpression",
+                                    "operator": "<",
+                                    "left": {
+                                        "type": "Identifier",
+                                        "name": "i"
+                                    },
+                                    "right": {
+                                        "type": "PropertyAccess",
+                                        "id": {
+                                            "type": "Identifier",
+                                            "name": "length"
+                                        },
+                                        "expression": {
+                                            "type": "PropertyAccess",
+                                            "id": {
+                                                "type": "Identifier",
+                                                "name": "dd"
+                                            },
+                                            "expression": {
+                                                "type": "PrefixedIdentifier",
+                                                "identifier": {
+                                                    "type": "Identifier",
+                                                    "name": "cc"
+                                                },
+                                                "prefix": {
+                                                    "type": "Identifier",
+                                                    "name": "ee"
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "updaters": [
+                                    {
+                                        "type": "Postfix",
+                                        "operator": "++",
+                                        "express": {
+                                            "type": "Identifier",
+                                            "name": "i"
+                                        }
+                                    }
+                                ]
+                            },
+                            "body": {
+                                "type": "BlockStatement",
+                                "body": [
+                                    {
+                                        "type": "AssignmentExpression",
+                                        "left": {
+                                            "type": "Identifier",
+                                            "name": "sum"
+                                        },
+                                        "right": null,
+                                        "operator": "+="
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "type": "IfStatement",
+                            "condition": {
+                                "type": "BinaryExpression",
+                                "operator": ">",
+                                "left": {
+                                    "type": "Identifier",
+                                    "name": "a"
+                                },
+                                "right": {
+                                    "type": "IntegerLiteral",
+                                    "value": 6
+                                }
+                            },
+                            "thenStatement": {
+                                "type": "BlockStatement",
+                                "body": [
+                                    {
+                                        "type": "AssignmentExpression",
+                                        "left": {
+                                            "type": "Identifier",
+                                            "name": "b"
+                                        },
+                                        "right": {
+                                            "type": "MethodInvocation",
+                                            "callee": {
+                                                "type": "Identifier",
+                                                "name": "add"
+                                            },
+                                            "typeArguments": null,
+                                            "argumentList": {
+                                                "type": "ArgumentList",
+                                                "argumentList": [
+                                                    {
+                                                        "type": "BinaryExpression",
+                                                        "operator": "*",
+                                                        "left": {
+                                                            "type": "Identifier",
+                                                            "name": "a"
+                                                        },
+                                                        "right": {
+                                                            "type": "IntegerLiteral",
+                                                            "value": 2
+                                                        }
+                                                    },
+                                                    {
+                                                        "type": "Identifier",
+                                                        "name": "b"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        "operator": "="
+                                    }
+                                ]
+                            },
+                            "elseStatement": {
+                                "type": "BlockStatement",
+                                "body": [
+                                    {
+                                        "type": "AssignmentExpression",
+                                        "left": {
+                                            "type": "Identifier",
+                                            "name": "b"
+                                        },
+                                        "right": {
+                                            "type": "BinaryExpression",
+                                            "operator": "+",
+                                            "left": {
+                                                "type": "Identifier",
+                                                "name": "a"
+                                            },
+                                            "right": {
+                                                "type": "IntegerLiteral",
+                                                "value": 3
+                                            }
+                                        },
+                                        "operator": "="
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "type": "ReturnStatement",
+                            "argument": {
+                                "type": "Identifier",
+                                "name": "sum"
+                            }
+                        }
+                    ]
+                },
+                "isAsync": false
+            },
+            "returnType": {
+                "type": "TypeName",
+                "name": "int"
+            }
+        },
+        {
+            "type": "FunctionDeclaration",
+            "id": {
+                "type": "Identifier",
+                "name": "add"
+            },
+            "expression": {
+                "type": "FunctionExpression",
+                "parameters": {
+                    "type": "FormalParameterList",
+                    "parameterList": [
+                        {
+                            "type": "SimpleFormalParameter",
+                            "paramType": {
+                                "type": "TypeName",
+                                "name": "int"
+                            },
+                            "name": "a"
+                        },
+                        {
+                            "type": "SimpleFormalParameter",
+                            "paramType": {
+                                "type": "TypeName",
+                                "name": "int"
+                            },
+                            "name": "b"
+                        }
+                    ]
+                },
+                "body": {
+                    "type": "BlockStatement",
+                    "body": [
+                        {
+                            "type": "ReturnStatement",
+                            "argument": {
+                                "type": "BinaryExpression",
+                                "operator": "+",
+                                "left": {
+                                    "type": "Identifier",
+                                    "name": "a"
+                                },
+                                "right": {
+                                    "type": "Identifier",
+                                    "name": "b"
+                                }
+                            }
+                        }
+                    ]
+                },
+                "isAsync": false
+            },
+            "returnType": {
+                "type": "TypeName",
+                "name": "int"
+            }
+        },
+        {
+            "type": "ClassDeclaration",
+            "id": {
+                "type": "Identifier",
+                "name": "HHHHH"
+            },
+            "superClause": null,
+            "implementsClause": null,
+            "mixinClause": null,
+            "metadata": [],
+            "body": [
+                {
+                    "type": "FieldDeclaration",
+                    "init": {
+                        "type": "VariableDeclarationList",
+                        "typeAnnotation": {
+                            "type": "TypeName",
+                            "name": "List"
+                        },
+                        "declarations": [
+                            {
+                                "type": "VariableDeclarator",
+                                "id": {
+                                    "type": "Identifier",
+                                    "name": "dd"
+                                },
+                                "init": {
+                                    "type": "ListLiteral",
+                                    "value": [
+                                        {
+                                            "type": "IntegerLiteral",
+                                            "value": 1
+                                        },
+                                        {
+                                            "type": "IntegerLiteral",
+                                            "value": 2
+                                        },
+                                        {
+                                            "type": "IntegerLiteral",
+                                            "value": 3
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "type": "MethodDeclaration",
+                    "id": {
+                        "type": "Identifier",
+                        "name": "ninini"
+                    },
+                    "parameters": {
+                        "type": "FormalParameterList",
+                        "parameterList": []
+                    },
+                    "typeParameters": null,
+                    "body": {
+                        "type": "BlockStatement",
+                        "body": [
+                            {
+                                "type": "VariableDeclarationList",
+                                "typeAnnotation": {
+                                    "type": "TypeName",
+                                    "name": "String"
+                                },
+                                "declarations": [
+                                    {
+                                        "type": "VariableDeclarator",
+                                        "id": {
+                                            "type": "Identifier",
+                                            "name": "len2"
+                                        },
+                                        "init": {
+                                            "type": "MethodInvocation",
+                                            "callee": {
+                                                "type": "MemberExpression",
+                                                "object": {
+                                                    "type": "PropertyAccess",
+                                                    "id": {
+                                                        "type": "Identifier",
+                                                        "name": "length"
+                                                    },
+                                                    "expression": {
+                                                        "type": "PropertyAccess",
+                                                        "id": {
+                                                            "type": "Identifier",
+                                                            "name": "dd"
+                                                        },
+                                                        "expression": {
+                                                            "type": "PropertyAccess",
+                                                            "id": {
+                                                                "type": "Identifier",
+                                                                "name": "this"
+                                                            }
+                                                        }
+                                                    }
+                                                },
+                                                "property": {
+                                                    "type": "Identifier",
+                                                    "name": "toString"
+                                                }
+                                            },
+                                            "typeArguments": null,
+                                            "argumentList": {
+                                                "type": "ArgumentList",
+                                                "argumentList": []
+                                            }
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "MethodInvocation",
+                                "callee": {
+                                    "type": "Identifier",
+                                    "name": "print"
+                                },
+                                "typeArguments": null,
+                                "argumentList": {
+                                    "type": "ArgumentList",
+                                    "argumentList": [
+                                        {
+                                            "type": "Identifier",
+                                            "name": "len2"
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    },
+                    "isAsync": false,
+                    "returnType": {
+                        "type": "TypeName",
+                        "name": "int"
+                    }
+                }
+            ]
+        }
+    ]
+}

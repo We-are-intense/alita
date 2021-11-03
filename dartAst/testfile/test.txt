@@ -1,0 +1,30 @@
+int test(int a, String bb) {
+  int b = 5;
+  int sum = a + b * 3;
+  String ee = "hello world!";
+  List<int> dd = [1, 2, 3];
+  int len1 = aa.dd.length.toString();
+  int len2 = this.dd.length.toString();
+  for (var i = 0; i < ee.cc.dd.length; i++) {
+    sum += dd[i];
+  }
+
+  if(a > 6) {
+    b = add(a * 2, b);
+  } else {
+    b = a + 3;
+  }
+  return sum;
+}
+
+int add(int a, int b) {
+  return a + b;
+}
+
+class HHHHH {
+  List<int> dd = [1, 2, 3];
+  int ninini() {
+    String len2 = this.dd.length.toString();
+    print(len2);
+  }
+}

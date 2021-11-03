@@ -74,13 +74,14 @@ class DartAstParser extends SimpleAstVisitor<Map> {
 
   //构造数值定义
   Map _buildNumericLiteral(num? value) =>
-      {"type": "NumericLiteral", "value": value};
+      {"type": "IntegerLiteral", "value": value};
 
   //构造函数声明
-  Map _buildFunctionDeclaration(Map? id, Map? expression) => {
+  Map _buildFunctionDeclaration(Map? id, Map? expression, Map? returnType) => {
         "type": "FunctionDeclaration",
         "id": id,
         "expression": expression,
+        "returnType": returnType
       };
 
   //构造函数表达式
@@ -227,11 +228,25 @@ class DartAstParser extends SimpleAstVisitor<Map> {
   Map visitIntegerLiteral(IntegerLiteral node) {
     return _buildNumericLiteral(node.value);
   }
-
+  @override
+  Map? visitDoubleLiteral(DoubleLiteral node) {
+    return {"type": "DoubleLiteral", "value": node.value};
+  }
   @override
   Map visitFunctionDeclaration(FunctionDeclaration node) {
+    Map? type;
+    if(node.returnType != null) {
+      type = _safelyVisitNode(node.returnType!);
+    } else {
+      type = { 
+      "type": "TypeName",
+        "name": "void"
+      };
+    }
     return _buildFunctionDeclaration(
-        _safelyVisitNode(node.name), _safelyVisitNode(node.functionExpression));
+        _safelyVisitNode(node.name), 
+        _safelyVisitNode(node.functionExpression), 
+        type);
   }
 
   @override
@@ -386,7 +401,16 @@ class DartAstParser extends SimpleAstVisitor<Map> {
     return _buildPropertyAccess(
         _safelyVisitNode(node.propertyName), _safelyVisitNode(node.target));
   }
-
+  @override
+  Map? visitThisExpression(ThisExpression node) {
+    return {
+      "type": "PropertyAccess",
+      "id": {
+          "type": "Identifier",
+          "name": "this"
+      }
+    };
+  }
   @override
   Map? visitForStatement(ForStatement node) {
     var loop = _safelyVisitNode(node.forLoopParts);
