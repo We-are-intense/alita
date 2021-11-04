@@ -66,7 +66,7 @@ class DartAstParser extends SimpleAstVisitor<Map> {
           Map? typeAnnotation, List<Map> declarations) =>
       {
         "type": "VariableDeclarationList",
-        "typeAnnotation": typeAnnotation,
+        "typeAnnotation": typeAnnotation == null ? { "type": "Identifier","name": "var"} : typeAnnotation,
         "declarations": declarations,
       };
   //构造标识符定义
@@ -102,7 +102,7 @@ class DartAstParser extends SimpleAstVisitor<Map> {
 
   //构造函数参数类型
   Map _buildTypeName(String name) => {
-        "type": "TypeName",
+        "type": "Identifier",
         "name": name,
       };
 
@@ -209,6 +209,7 @@ class DartAstParser extends SimpleAstVisitor<Map> {
 
   @override
   Map? visitVariableDeclarationList(VariableDeclarationList node) {
+    
     return _buildVariableDeclarationList(
         _safelyVisitNode(node.type), _safelyVisitNodeList(node.variables));
   }
@@ -239,7 +240,7 @@ class DartAstParser extends SimpleAstVisitor<Map> {
       type = _safelyVisitNode(node.returnType!);
     } else {
       type = { 
-      "type": "TypeName",
+      "type": "Identifier",
         "name": "void"
       };
     }
@@ -430,7 +431,7 @@ class DartAstParser extends SimpleAstVisitor<Map> {
     var vari = {
       "type": "VariableDeclarationList",
       "typeAnnotation": {
-          "type": "TypeName",
+          "type": "Identifier",
           "name": node.loopVariable.type?.type?.getDisplayString(withNullability: true)
       },
       "declarations": [
@@ -518,6 +519,17 @@ class DartAstParser extends SimpleAstVisitor<Map> {
     return {
       "type": "ListLiteral",
       "value": lists
+    };
+  }
+  @override
+  Map? visitIndexExpression(IndexExpression node) {
+    var index = _safelyVisitNode(node.index);
+    var target = _safelyVisitNode(node.realTarget);
+
+    return {
+      "type": "IndexExpression",
+      "index": index,
+      "target": target,
     };
   }
 

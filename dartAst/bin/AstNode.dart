@@ -47,7 +47,7 @@ class BooleanLiteral extends Expression {
 
 class Variable extends Expression {
   String name;
-  String type;
+  String? type;
   Variable(this.name, this.type);
   @override
   accept(AstVisitor visitor, {additional}) {
@@ -88,13 +88,33 @@ class NamedExpression extends Expression {
 }
 
 class FunctionCall extends Expression {
-  String name;
+  String? name;
   List<Expression>? parameters;
   Expression callee;
   FunctionCall(this.name, this.parameters, this.callee);
   @override
   accept(AstVisitor visitor, {additional}) {
     return visitor.visitFunctionCall(this, additional: additional);
+  }
+}
+
+class InstanceCreation extends Expression {
+  String name;
+  List<Expression>? parameters;
+  InstanceCreation(this.name, this.parameters);
+  @override
+  accept(AstVisitor visitor, {additional}) {
+    return visitor.visitInstanceCreation(this, additional: additional);
+  }
+}
+
+class IndexExpression extends Expression {
+  Expression index;
+  Expression target;
+  IndexExpression(this.index, this.target);
+  @override
+  accept(AstVisitor visitor, {additional}) {
+    return visitor.visitIndexExpression(this, additional: additional);
   }
 }
 
@@ -124,7 +144,8 @@ class FunctionDecl extends Statement {
   List<Variable>? parameters;
   String returnType;
   BlockStatement blockStmt;
-  FunctionDecl(this.name, this.parameters, this.returnType, this.blockStmt);
+  bool isAsync = false;
+  FunctionDecl(this.name, this.parameters, this.returnType, this.blockStmt, this.isAsync);
   @override
   accept(AstVisitor visitor, {additional}) {
     return visitor.visitFunctionDecl(this, additional: additional);
@@ -151,8 +172,8 @@ class ReturnStatement extends Statement {
 
 class IfStatement extends Statement {
   Expression condition;
-  List<Statement> thenStmts;
-  List<Statement>? elseStmts;
+  BlockStatement thenStmts;
+  BlockStatement? elseStmts;
   IfStatement(this.condition, this.thenStmts, this.elseStmts);
   @override
   accept(AstVisitor visitor, {additional}) {
@@ -161,9 +182,9 @@ class IfStatement extends Statement {
 }
 
 class ForStatement extends Statement {
-  Expression? init;
+  AstNode? init;
   Expression? condition;
-  Expression? updaters;
+  List<Expression>? updaters;
   BlockStatement body;
   ForStatement(this.init, this.condition, this.updaters, this.body);
   @override
@@ -174,9 +195,9 @@ class ForStatement extends Statement {
 
 class ClassDeclaration extends Statement {
   String name;
-  String superName;
-  List<VariableDecl> fields;
-  List<FunctionDecl> methods;
+  String? superName;
+  List<VariableDecl>? fields;
+  List<FunctionDecl>? methods;
   ClassDeclaration(this.name, this.superName, this.fields, this.methods);
 }
 

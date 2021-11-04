@@ -10,7 +10,7 @@ void main(List<String> arguments) async {
   sps.removeLast();sps.removeLast();
   path = sps.join("/");
 
-  arguments = ["-f", path +"/testfile/test.txt"];
+  arguments = ["-f", path +"/testfile/list.dart"];
   print(path);
   final parser = ArgParser()..addFlag("file", negatable: false, abbr: 'f');
   var argResults = parser.parse(arguments);

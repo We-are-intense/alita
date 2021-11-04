@@ -1,4 +1,6 @@
 import 'AstNode.dart';
+import 'dart:io';
+import 'dart:convert' as convert;
 
 class ParserDartAst {
   Map ast = {};
@@ -14,6 +16,7 @@ class ParserDartAst {
       "BinaryExpression": this.parserBinary,
       "ReturnStatement": this.parserReturnStatement,
       "FormalParameterList": this.parserParameterList,
+      "SimpleFormalParameter": this.parserParameterList,
       "BlockStatement": this.parserBlockStatement,
       "Prefix":this.parserUnary,
       "Postfix":this.parserUnary,
@@ -23,8 +26,31 @@ class ParserDartAst {
       "AssignmentExpression":this.parserAssignmentExpression,
       "PropertyAccess":this.parserPropertyAccess,
       "PrefixedIdentifier":this.parserPrefixedIdentifier,
+      "MethodInvocation":this.parserMethodInvocation,
+      "MemberExpression":this.parserMemberExpression,
+      "ArgumentList":this.parserArgumentList,
+
+      "ClassDeclaration":this.parserClassDeclaration,
+      "FieldDeclaration":this.parserFieldDeclaration,
+      "MethodDeclaration":this.parserMethodDeclaration,
+      "ReturnType":this.parserReturnType,
+      "NamedExpression":this.parserNamedExpression,
+      "InstanceCreationExpression":this.parserInstanceCreationExpression,
     };
   }
+
+  List<AstNode> prog() {
+    List<AstNode> stmts = [];
+    List? body = this.ast["body"];
+    if(body == null) return stmts;
+    for (Map item in body) {
+      AstNode? node = strategyFunc(item);
+      if(node != null) stmts.add(node);
+    }
+    return stmts;
+  }
+
+
   dynamic strategyFunc(Map? vv) {
     if(vv == null || vv.isEmpty) return null;
     Function? func = this.strategy[vv["type"]];
@@ -37,9 +63,10 @@ class ParserDartAst {
     String name = id["name"];
     Map expression = funcDecl["expression"];
     List<Variable>? parameters = strategyFunc(expression["parameters"]);
-    String returnType = funcDecl["returnType"]["name"];
+    StringLiteral returnType = strategyFunc(funcDecl["returnType"]); 
     BlockStatement? blockStmt = strategyFunc(expression["body"]);
-    return FunctionDecl(name, parameters, returnType, blockStmt!);
+    bool isAsync = funcDecl["isAsync"] == null ? false : funcDecl["isAsync"];
+    return FunctionDecl(name, parameters, returnType.value, blockStmt!, isAsync);
   }
 
   List<Variable>? parserParameterList(Map? parameters) {
@@ -50,22 +77,34 @@ class ParserDartAst {
     for (Map item in parameterList) {
       var type = item["paramType"]["name"];
       var name = item["name"];
-      if(type && name) {
+      if(name != null) {
         paramList.add(Variable(name, type));
       }
     }
     return paramList;
   }
 
-  BlockStatement parserBlockStatement(Map? body) {
+  BlockStatement? parserBlockStatement(Map? bb) {
+    if(bb == null) return null;
     List<Statement> stmts = [];
-
+    List? body = bb["body"];
+    if(body == null) return null;
+    for (Map item in body) {
+      AstNode? node = strategyFunc(item);
+      if(node is Expression) {
+        node = ExpressionStatement(node);
+      }
+      if(node != null) stmts.add(node as Statement);
+    }
     return BlockStatement(stmts);
   }
 
   VariableDecl? parserVariableDeclarationList(Map? vari) {
     if(vari == null) return null;
-    String type = vari["typeAnnotation"]["name"];
+    String type = "var";
+    if(vari["typeAnnotation"] != null && vari["typeAnnotation"]["name"] != null) {
+      type = vari["typeAnnotation"]["name"];
+    }
     List declarations = vari["declarations"];
     if(declarations.isEmpty) return null;
     Map first = declarations.first;
@@ -95,14 +134,16 @@ class ParserDartAst {
     }
     return null;
   }
-  String? parserIdentifier(Map ii) {
+  StringLiteral? parserIdentifier(Map ii) {
     /*
     "id": {
           "type": "Identifier",
           "name": "mainAxisSize"
       }
      */
-    return ii["name"];
+    String? name = ii["name"];
+    if(name == null) return null;
+    return StringLiteral(name);
   }
   ReturnStatement? parserReturnStatement(Map rr) {
     Expression? exp = strategyFunc(rr["argument"]);
@@ -112,16 +153,25 @@ class ParserDartAst {
 
   IfStatement? parserIfStatement(Map ii) {
     Expression? condition = strategyFunc(ii["condition"]);
-    List<Statement>? thenStatement = strategyFunc(ii["thenStatement"]);
-    List<Statement>? elseStatement = strategyFunc(ii["elseStatement"]);
+    BlockStatement? thenStatement = strategyFunc(ii["thenStatement"]);
+    BlockStatement? elseStatement = strategyFunc(ii["elseStatement"]);
     if(condition == null || thenStatement == null) return null;
     return IfStatement(condition, thenStatement, elseStatement);
   }
 
   ForStatement? parsertForStatement(Map ff) {
-    Expression? init = strategyFunc(ff["loop"]["init"]);
-    Expression? condition = strategyFunc(ff["loop"]["condition"]);
-    Expression? updaters = strategyFunc(ff["loop"]["updaters"]);
+    AstNode? init = strategyFunc(ff["loop"]?["init"]);
+    Expression? condition = strategyFunc(ff["loop"]?["condition"]);
+    List? updaterList = ff["loop"]?["updaters"];
+    List<Expression>? updaters = [];
+    if(updaterList != null) {
+      for (Map item in updaterList) {
+        Expression? exp = strategyFunc(item);
+        if(exp != null) {
+          updaters.add(exp);
+        }    
+      }
+    }
     BlockStatement? blockStatement = strategyFunc(ff["body"]);
     if(blockStatement == null) return null;
     return ForStatement(init, condition, updaters, blockStatement);
@@ -146,12 +196,14 @@ class ParserDartAst {
     return Binary(op, left, right);
   }
 
-  Binary? parserPropertyAccess(Map bb) {
+  Expression? parserPropertyAccess(Map bb) {
     String op = ".";
     Expression? left = strategyFunc(bb["expression"]);
     Expression? right = strategyFunc(bb["id"]);
-    if(left == null || right == null) return null;
-    return Binary(op, left, right);
+    if(left == null && right == null) return null;
+    if(left != null && right == null) return left;
+    if(left == null && right != null) return right;
+    return Binary(op, left!, right!);
   }
 
   Binary? parserPrefixedIdentifier(Map bb) {
@@ -174,17 +226,114 @@ class ParserDartAst {
   }
 
   FunctionCall? parserMethodInvocation(Map bb) {
-
+    Expression? callee = strategyFunc(bb["callee"]);
+    StringLiteral? name = strategyFunc(bb["callee"]["property"]);
+    List<Expression>? args = strategyFunc(bb["argumentList"]);
+    if(callee == null) return null;
+    return FunctionCall(name?.value, args,callee);
   }
 
   Binary? parserMemberExpression(Map bb) {
-
+    return strategyFunc(bb["object"]);
   }
 
-  
+  List<Expression>? parserArgumentList(Map bb) {
+    List? argumentList = bb["argumentList"];
+    if(argumentList == null || argumentList.isEmpty) return null;
+    List<Expression> args = [];
+    for (Map item in argumentList) {
+      Expression? exp = strategyFunc(item);
+      if(exp != null) {
+        args.add(exp);
+      }
+    }
+    return args;
+  }
+
+//-------------------------
+  ClassDeclaration? parserClassDeclaration(Map bb) {
+    StringLiteral? name = strategyFunc(bb["id"]);
+    if(name == null) return null;
+    StringLiteral? superName = strategyFunc(bb["superClause"]);
+    List? body = bb["body"];
+    if(body == null || body.isEmpty) return null;
+    List<VariableDecl> fields = [];
+    List<FunctionDecl> methods = [];
+    for (Map item in body) {
+      AstNode? exp = strategyFunc(item);
+      if(item["type"] == "FieldDeclaration") {
+        if(exp != null) fields.add(exp as VariableDecl);
+      } else if(item["type"] == "MethodDeclaration") {
+        if(exp != null) methods.add(exp as FunctionDecl);
+      }
+    }
+    return ClassDeclaration(name.value, superName?.value, fields, methods);
+  }
+
+  VariableDecl? parserFieldDeclaration(Map bb) {
+    return strategyFunc(bb["init"]);
+  }
+
+  FunctionDecl? parserMethodDeclaration(Map bb) {
+    /*
+      String name;
+      List<Variable>? parameters;
+      String returnType;
+      BlockStatement blockStmt;
+    */
+    StringLiteral? name = strategyFunc(bb["id"]);
+    if(name == null) return null;
+    List<Variable>? parameters = strategyFunc(bb["parameters"]); 
+    BlockStatement? blockStmt  = strategyFunc(bb["body"]); 
+    if(blockStmt == null) return null;
+    StringLiteral returnType = strategyFunc(bb["returnType"]); 
+    bool isAsync = bb["isAsync"];
+    return FunctionDecl(name.value, parameters, returnType.value, blockStmt, isAsync);
+  }
+
+  StringLiteral? parserReturnType(Map bb) {
+    String? returnType = bb["name"];
+    return (returnType == null ? StringLiteral("void") : StringLiteral(returnType));
+  }
+
+  NamedExpression? parserNamedExpression(Map bb) {
+    StringLiteral? name = strategyFunc(bb["id"]);
+    Expression? exp = strategyFunc(bb["expression"]); 
+    if(exp == null) return null;
+    return NamedExpression(name?.value, exp);
+  }
+
+  InstanceCreation? parserInstanceCreationExpression(Map bb) {
+    StringLiteral? name = strategyFunc(bb["name"]);
+    if(name == null) return null;
+    List? arguments = bb["arguments"];
+    if(arguments == null) return null;
+    List<Expression> parameters = [];
+    for (Map item in arguments) {
+      Expression? exp = strategyFunc(item);
+      if(exp != null) parameters.add(exp);
+    }
+    return InstanceCreation(name.value, parameters);
+  }
+  AstNode? parserListLiteral(Map bb) {
+
+  }
+  // list 访问
+  // parserMemberExpression 空值
+
+}
 
 
-
-
+void main() async {
+  String path = Platform.script.toFilePath();
+  List<String> sps = path.split("/");
+  sps.removeLast();sps.removeLast();
+  path = sps.join("/");
+  File file = new File(path + "/testfile/result.json");
+  String content = await file.readAsString();
+  Map mc = convert.jsonDecode(content);
+  ParserDartAst ast = ParserDartAst(mc);
+  List<AstNode> asts = ast.prog();
+  print("done");
 
 }

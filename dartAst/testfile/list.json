@@ -1,0 +1,125 @@
+{
+    "type": "Program",
+    "body": [
+        {
+            "type": "FunctionDeclaration",
+            "id": {
+                "type": "Identifier",
+                "name": "test"
+            },
+            "expression": {
+                "type": "FunctionExpression",
+                "parameters": {
+                    "type": "FormalParameterList",
+                    "parameterList": [
+                        {
+                            "type": "SimpleFormalParameter",
+                            "paramType": {
+                                "type": "Identifier",
+                                "name": "int"
+                            },
+                            "name": "a"
+                        },
+                        {
+                            "type": "SimpleFormalParameter",
+                            "paramType": {
+                                "type": "Identifier",
+                                "name": "int"
+                            },
+                            "name": "b"
+                        }
+                    ]
+                },
+                "body": {
+                    "type": "BlockStatement",
+                    "body": [
+                        {
+                            "type": "VariableDeclarationList",
+                            "typeAnnotation": {
+                                "type": "Identifier",
+                                "name": "List"
+                            },
+                            "declarations": [
+                                {
+                                    "type": "VariableDeclarator",
+                                    "id": {
+                                        "type": "Identifier",
+                                        "name": "aa"
+                                    },
+                                    "init": {
+                                        "type": "ListLiteral",
+                                        "value": [
+                                            {
+                                                "type": "IntegerLiteral",
+                                                "value": 1
+                                            },
+                                            {
+                                                "type": "IntegerLiteral",
+                                                "value": 3
+                                            },
+                                            {
+                                                "type": "IntegerLiteral",
+                                                "value": 4
+                                            },
+                                            {
+                                                "type": "IntegerLiteral",
+                                                "value": 5
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "type": "VariableDeclarationList",
+                            "typeAnnotation": {
+                                "type": "Identifier",
+                                "name": "int"
+                            },
+                            "declarations": [
+                                {
+                                    "type": "VariableDeclarator",
+                                    "id": {
+                                        "type": "Identifier",
+                                        "name": "c"
+                                    },
+                                    "init": {
+                                        "type": "IndexExpression",
+                                        "index": {
+                                            "type": "IntegerLiteral",
+                                            "value": 0
+                                        },
+                                        "target": {
+                                            "type": "Identifier",
+                                            "name": "aa"
+                                        }
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "type": "ReturnStatement",
+                            "argument": {
+                                "type": "BinaryExpression",
+                                "operator": "+",
+                                "left": {
+                                    "type": "Identifier",
+                                    "name": "a"
+                                },
+                                "right": {
+                                    "type": "Identifier",
+                                    "name": "b"
+                                }
+                            }
+                        }
+                    ]
+                },
+                "isAsync": false
+            },
+            "returnType": {
+                "type": "Identifier",
+                "name": "int"
+            }
+        }
+    ]
+}

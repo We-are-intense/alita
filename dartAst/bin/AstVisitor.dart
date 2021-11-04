@@ -2,10 +2,7 @@
 import 'AstNode.dart';
 
 class AstVisitor {
-  dynamic visit(AstNode node, {dynamic additional}) {
-    return node.accept(this, additional: additional);
-  }
-
+  dynamic visit(AstNode node, {dynamic additional}) => node.accept(this, additional: additional);
   dynamic visitStringLiteral(StringLiteral node, {dynamic additional}) => node.value;
   dynamic visitIntegerLiteral(IntegerLiteral node, {dynamic additional}) => node.value;
   dynamic visitDoubleLiteral(DoubleLiteral node, {dynamic additional}) => node.value;
@@ -28,6 +25,14 @@ class AstVisitor {
     }
     return null;
   }
+  dynamic visitInstanceCreation(InstanceCreation node, {dynamic additional}) {
+    if(node.parameters == null) return null;
+    for (Expression item in node.parameters!) {
+      visit(item, additional: additional);  
+    }
+    return null;
+  }
+  
   dynamic visitNamedExpression(NamedExpression node, {dynamic additional}) => visit(node.exp, additional: additional);
 
   // Statement
@@ -58,13 +63,10 @@ class AstVisitor {
   
   dynamic visitIfStatement(IfStatement node, {dynamic additional}) {
     visit(node.condition, additional: additional);
-    for (Statement item in node.thenStmts) {
-      visit(item, additional: additional);
-    }
+    visit(node.thenStmts, additional: additional);
+    
     if(node.elseStmts != null) {
-      for (Statement item in node.elseStmts!) {
-        visit(item, additional: additional);
-      }
+      visit(node.elseStmts!, additional: additional);
     }
     return null;
   }
@@ -78,9 +80,17 @@ class AstVisitor {
     }
 
     if(node.updaters != null) {
-      visit(node.updaters!, additional: additional);
+      for (Expression item in node.updaters!) {
+        visit(item, additional: additional);
+      }
     }
     visit(node.body, additional: additional);
+    return null;
+  }
+
+  dynamic visitIndexExpression(IndexExpression node, {dynamic additional}) {
+    visit(node.index, additional: additional);
+    visit(node.target, additional: additional);
     return null;
   }
 }

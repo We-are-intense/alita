@@ -5,7 +5,8 @@ int test(int a, String bb) {
   List<int> dd = [1, 2, 3];
   int len1 = aa.dd.length.toString();
   int len2 = this.dd.length.toString();
-  for (var i = 0; i < ee.cc.dd.length; i++) {
+  int j = 0;
+  for (var i = 0; i < ee.cc.dd.length; i++, j++) {
     sum += dd[i];
   }
 

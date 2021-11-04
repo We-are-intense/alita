@@ -15,7 +15,7 @@
                         {
                             "type": "SimpleFormalParameter",
                             "paramType": {
-                                "type": "TypeName",
+                                "type": "Identifier",
                                 "name": "int"
                             },
                             "name": "a"
@@ -23,7 +23,7 @@
                         {
                             "type": "SimpleFormalParameter",
                             "paramType": {
-                                "type": "TypeName",
+                                "type": "Identifier",
                                 "name": "String"
                             },
                             "name": "bb"
@@ -36,7 +36,7 @@
                         {
                             "type": "VariableDeclarationList",
                             "typeAnnotation": {
-                                "type": "TypeName",
+                                "type": "Identifier",
                                 "name": "int"
                             },
                             "declarations": [
@@ -56,7 +56,7 @@
                         {
                             "type": "VariableDeclarationList",
                             "typeAnnotation": {
-                                "type": "TypeName",
+                                "type": "Identifier",
                                 "name": "int"
                             },
                             "declarations": [
@@ -92,7 +92,7 @@
                         {
                             "type": "VariableDeclarationList",
                             "typeAnnotation": {
-                                "type": "TypeName",
+                                "type": "Identifier",
                                 "name": "String"
                             },
                             "declarations": [
@@ -112,7 +112,7 @@
                         {
                             "type": "VariableDeclarationList",
                             "typeAnnotation": {
-                                "type": "TypeName",
+                                "type": "Identifier",
                                 "name": "List"
                             },
                             "declarations": [
@@ -145,7 +145,7 @@
                         {
                             "type": "VariableDeclarationList",
                             "typeAnnotation": {
-                                "type": "TypeName",
+                                "type": "Identifier",
                                 "name": "int"
                             },
                             "declarations": [
@@ -194,7 +194,7 @@
                         {
                             "type": "VariableDeclarationList",
                             "typeAnnotation": {
-                                "type": "TypeName",
+                                "type": "Identifier",
                                 "name": "int"
                             },
                             "declarations": [
@@ -244,11 +244,34 @@
                             ]
                         },
                         {
+                            "type": "VariableDeclarationList",
+                            "typeAnnotation": {
+                                "type": "Identifier",
+                                "name": "int"
+                            },
+                            "declarations": [
+                                {
+                                    "type": "VariableDeclarator",
+                                    "id": {
+                                        "type": "Identifier",
+                                        "name": "j"
+                                    },
+                                    "init": {
+                                        "type": "IntegerLiteral",
+                                        "value": 0
+                                    }
+                                }
+                            ]
+                        },
+                        {
                             "type": "ForStatement",
                             "loop": {
                                 "init": {
                                     "type": "VariableDeclarationList",
-                                    "typeAnnotation": null,
+                                    "typeAnnotation": {
+                                        "type": "Identifier",
+                                        "name": "var"
+                                    },
                                     "declarations": [
                                         {
                                             "type": "VariableDeclarator",
@@ -303,6 +326,14 @@
                                         "express": {
                                             "type": "Identifier",
                                             "name": "i"
+                                        }
+                                    },
+                                    {
+                                        "type": "Postfix",
+                                        "operator": "++",
+                                        "express": {
+                                            "type": "Identifier",
+                                            "name": "j"
                                         }
                                     }
                                 ]
@@ -416,7 +447,7 @@
                 "isAsync": false
             },
             "returnType": {
-                "type": "TypeName",
+                "type": "Identifier",
                 "name": "int"
             }
         },
@@ -434,7 +465,7 @@
                         {
                             "type": "SimpleFormalParameter",
                             "paramType": {
-                                "type": "TypeName",
+                                "type": "Identifier",
                                 "name": "int"
                             },
                             "name": "a"
@@ -442,7 +473,7 @@
                         {
                             "type": "SimpleFormalParameter",
                             "paramType": {
-                                "type": "TypeName",
+                                "type": "Identifier",
                                 "name": "int"
                             },
                             "name": "b"
@@ -472,7 +503,7 @@
                 "isAsync": false
             },
             "returnType": {
-                "type": "TypeName",
+                "type": "Identifier",
                 "name": "int"
             }
         },
@@ -492,7 +523,7 @@
                     "init": {
                         "type": "VariableDeclarationList",
                         "typeAnnotation": {
-                            "type": "TypeName",
+                            "type": "Identifier",
                             "name": "List"
                         },
                         "declarations": [
@@ -540,7 +571,7 @@
                             {
                                 "type": "VariableDeclarationList",
                                 "typeAnnotation": {
-                                    "type": "TypeName",
+                                    "type": "Identifier",
                                     "name": "String"
                                 },
                                 "declarations": [
@@ -610,7 +641,7 @@
                     },
                     "isAsync": false,
                     "returnType": {
-                        "type": "TypeName",
+                        "type": "Identifier",
                         "name": "int"
                     }
                 }
