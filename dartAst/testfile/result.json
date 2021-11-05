@@ -347,7 +347,17 @@
                                             "type": "Identifier",
                                             "name": "sum"
                                         },
-                                        "right": null,
+                                        "right": {
+                                            "type": "IndexExpression",
+                                            "index": {
+                                                "type": "Identifier",
+                                                "name": "i"
+                                            },
+                                            "target": {
+                                                "type": "Identifier",
+                                                "name": "dd"
+                                            }
+                                        },
                                         "operator": "+="
                                     }
                                 ]

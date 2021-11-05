@@ -548,4 +548,12 @@ class DartAstParser extends SimpleAstVisitor<Map> {
       "elseStatement": elseStmt
     };
   }
+  @override
+  Map? visitTypeArgumentList(TypeArgumentList node) {
+    var typeArguments = _safelyVisitNodeList(node.arguments);
+    return {
+      "type":"",
+      "typeArguments": typeArguments
+    };
+  }
 }

@@ -45,6 +45,15 @@ class BooleanLiteral extends Expression {
   }
 }
 
+class ListLiteral extends Expression {
+  List<Expression> list;
+  ListLiteral(this.list);
+  @override
+  accept(AstVisitor visitor, {additional}) {
+    return visitor.visitListLiteral(this, additional: additional);
+  }
+}
+
 class Variable extends Expression {
   String name;
   String? type;
@@ -79,7 +88,7 @@ class Unary extends Expression {
 
 class NamedExpression extends Expression {
   String? name;
-  Expression exp;
+  AstNode exp;
   NamedExpression(this.name ,this.exp);
   @override
   accept(AstVisitor visitor, {additional}) {
@@ -140,9 +149,9 @@ class BlockStatement extends Statement {
 }
 
 class FunctionDecl extends Statement {
-  String name;
+  String? name;
   List<Variable>? parameters;
-  String returnType;
+  String? returnType;
   BlockStatement blockStmt;
   bool isAsync = false;
   FunctionDecl(this.name, this.parameters, this.returnType, this.blockStmt, this.isAsync);

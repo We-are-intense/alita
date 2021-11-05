@@ -4,13 +4,17 @@ import 'package:analyzer/dart/analysis/features.dart';
 import 'package:analyzer/dart/analysis/utilities.dart';
 import 'package:args/args.dart';
 import 'DartAstParser.dart';
+import 'ParserDartAst.dart';
+import 'AstNode.dart';
+import 'AstVisitor.dart';
+
 void main(List<String> arguments) async {
   String path = Platform.script.toFilePath();
   List<String> sps = path.split("/");
   sps.removeLast();sps.removeLast();
   path = sps.join("/");
 
-  arguments = ["-f", path +"/testfile/list.dart"];
+  arguments = ["-f", path +"/testfile/uitest.dart"];
   print(path);
   final parser = ArgParser()..addFlag("file", negatable: false, abbr: 'f');
   var argResults = parser.parse(arguments);
@@ -18,7 +22,9 @@ void main(List<String> arguments) async {
     if (paths.isEmpty) {
     stdout.writeln('No file found');
   } else {
-    var ast = await generate(paths[0]);
+    var data = await generate(paths[0]);
+    ParserDartAst ast = ParserDartAst(data);
+    List<AstNode> asts = ast.prog();
   }
 }
 

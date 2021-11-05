@@ -93,4 +93,12 @@ class AstVisitor {
     visit(node.target, additional: additional);
     return null;
   }
+  dynamic visitListLiteral(ListLiteral node, {dynamic additional}) {
+    for (Expression item in node.list) {
+      visit(item, additional: additional);
+    }
+    return null;
+  }
+
+  
 }

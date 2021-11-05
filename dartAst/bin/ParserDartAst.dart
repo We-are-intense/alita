@@ -1,7 +1,7 @@
 import 'AstNode.dart';
 import 'dart:io';
 import 'dart:convert' as convert;
-
+import 'VisitDartAst.dart';
 class ParserDartAst {
   Map ast = {};
   Map<String, Function> strategy = {};
@@ -9,6 +9,7 @@ class ParserDartAst {
     this.ast = ast;
     this.strategy = {
       "FunctionDeclaration":this.parserFunctionDeclaration,
+      "FunctionExpression":this.parserFunctionExpression,
       "VariableDeclarationList": this.parserVariableDeclarationList,
       "IntegerLiteral": this.parserIntegerLiteral,
       "DoubleLiteral": this.parserDoubleLiteral,
@@ -29,13 +30,14 @@ class ParserDartAst {
       "MethodInvocation":this.parserMethodInvocation,
       "MemberExpression":this.parserMemberExpression,
       "ArgumentList":this.parserArgumentList,
-
       "ClassDeclaration":this.parserClassDeclaration,
       "FieldDeclaration":this.parserFieldDeclaration,
       "MethodDeclaration":this.parserMethodDeclaration,
       "ReturnType":this.parserReturnType,
       "NamedExpression":this.parserNamedExpression,
       "InstanceCreationExpression":this.parserInstanceCreationExpression,
+      "ListLiteral":this.parserListLiteral,
+      "IndexExpression":this.parserIndexExpression,
     };
   }
 
@@ -58,15 +60,26 @@ class ParserDartAst {
     return func(vv);
   }
 
-  FunctionDecl parserFunctionDeclaration(Map funcDecl) {
-    Map id = funcDecl["id"];
-    String name = id["name"];
-    Map expression = funcDecl["expression"];
-    List<Variable>? parameters = strategyFunc(expression["parameters"]);
-    StringLiteral returnType = strategyFunc(funcDecl["returnType"]); 
-    BlockStatement? blockStmt = strategyFunc(expression["body"]);
-    bool isAsync = funcDecl["isAsync"] == null ? false : funcDecl["isAsync"];
-    return FunctionDecl(name, parameters, returnType.value, blockStmt!, isAsync);
+  FunctionDecl? parserFunctionDeclaration(Map? bb) {
+    if(bb == null) return null;
+    String? name = bb["id"]?["name"];
+    if(name == null) return null;
+    FunctionDecl? decl = strategyFunc(bb["expression"]);
+    if(decl == null) return null;
+    StringLiteral returnType = strategyFunc(bb["returnType"]); 
+    bool isAsync = bb["isAsync"] == null ? false : bb["isAsync"];
+    decl.name = name;
+    decl.returnType = returnType.value;
+    decl.isAsync = isAsync;
+    return decl;
+  }
+
+  FunctionDecl? parserFunctionExpression(Map? bb) {
+    if(bb == null) return null;
+    List<Variable>? parameters = strategyFunc(bb["parameters"]);
+    BlockStatement? blockStmt = strategyFunc(bb["body"]);
+    if(blockStmt == null) return null;
+    return FunctionDecl(null, parameters, null, blockStmt, false);
   }
 
   List<Variable>? parserParameterList(Map? parameters) {
@@ -75,7 +88,7 @@ class ParserDartAst {
     if(parameterList.isEmpty) return null;
     List<Variable> paramList = [];
     for (Map item in parameterList) {
-      var type = item["paramType"]["name"];
+      var type = item["paramType"]?["name"];
       var name = item["name"];
       if(name != null) {
         paramList.add(Variable(name, type));
@@ -298,7 +311,7 @@ class ParserDartAst {
 
   NamedExpression? parserNamedExpression(Map bb) {
     StringLiteral? name = strategyFunc(bb["id"]);
-    Expression? exp = strategyFunc(bb["expression"]); 
+    AstNode? exp = strategyFunc(bb["expression"]); 
     if(exp == null) return null;
     return NamedExpression(name?.value, exp);
   }
@@ -315,12 +328,23 @@ class ParserDartAst {
     }
     return InstanceCreation(name.value, parameters);
   }
-  AstNode? parserListLiteral(Map bb) {
-
+  ListLiteral? parserListLiteral(Map bb) {
+    List? value = bb["value"];
+    if(value == null) return null;
+    List<Expression> exps = [];
+    for (Map item in value) {
+      Expression? exp = strategyFunc(item);
+      if(exp != null) exps.add(exp);
+    }
+    return ListLiteral(exps);
   }
-  // list 访问
-  // parserMemberExpression 空值
 
+  IndexExpression? parserIndexExpression(Map bb) {
+    Expression? index = strategyFunc(bb["index"]);
+    Expression? target = strategyFunc(bb["target"]);
+    if(index == null || target == null) return null;
+    return IndexExpression(index, target);
+  }
 }
 
 
@@ -329,11 +353,12 @@ void main() async {
   List<String> sps = path.split("/");
   sps.removeLast();sps.removeLast();
   path = sps.join("/");
-  File file = new File(path + "/testfile/result.json");
+  File file = new File(path + "/testfile/uitest.json");
   String content = await file.readAsString();
   Map mc = convert.jsonDecode(content);
   ParserDartAst ast = ParserDartAst(mc);
-  List<AstNode> asts = ast.prog();
+  List<AstNode> stmts = ast.prog();
+  VisitDartAst().prog(stmts);
   print("done");
 
 }

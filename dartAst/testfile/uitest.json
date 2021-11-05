@@ -1,0 +1,452 @@
+{
+    "type": "Program",
+    "body": [
+        {
+            "type": "FunctionDeclaration",
+            "id": {
+                "type": "Identifier",
+                "name": "main"
+            },
+            "expression": {
+                "type": "FunctionExpression",
+                "parameters": {
+                    "type": "FormalParameterList",
+                    "parameterList": []
+                },
+                "body": {
+                    "type": "BlockStatement",
+                    "body": [
+                        {
+                            "type": "MethodInvocation",
+                            "callee": {
+                                "type": "Identifier",
+                                "name": "runApp"
+                            },
+                            "typeArguments": null,
+                            "argumentList": {
+                                "type": "ArgumentList",
+                                "argumentList": [
+                                    {
+                                        "type": "InstanceCreationExpression",
+                                        "name": {
+                                            "type": "Identifier",
+                                            "name": "MyApp"
+                                        },
+                                        "arguments": []
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                },
+                "isAsync": false
+            },
+            "returnType": {
+                "type": "Identifier",
+                "name": "void"
+            }
+        },
+        {
+            "type": "ClassDeclaration",
+            "id": {
+                "type": "Identifier",
+                "name": "MyApp"
+            },
+            "superClause": {
+                "type": "Identifier",
+                "name": "StatelessWidget"
+            },
+            "implementsClause": null,
+            "mixinClause": null,
+            "metadata": [],
+            "body": [
+                {
+                    "type": "FieldDeclaration",
+                    "init": {
+                        "type": "VariableDeclarationList",
+                        "typeAnnotation": {
+                            "type": "Identifier",
+                            "name": "var"
+                        },
+                        "declarations": [
+                            {
+                                "type": "VariableDeclarator",
+                                "id": {
+                                    "type": "Identifier",
+                                    "name": "title"
+                                },
+                                "init": {
+                                    "type": "StringLiteral",
+                                    "value": "壹钱包大前端产线问题排查系统"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": null,
+                    "parameters": {
+                        "type": "FormalParameterList",
+                        "parameterList": []
+                    },
+                    "body": null
+                },
+                {
+                    "type": "MethodDeclaration",
+                    "id": {
+                        "type": "Identifier",
+                        "name": "build"
+                    },
+                    "parameters": {
+                        "type": "FormalParameterList",
+                        "parameterList": [
+                            {
+                                "type": "SimpleFormalParameter",
+                                "paramType": {
+                                    "type": "Identifier",
+                                    "name": "BuildContext"
+                                },
+                                "name": "context"
+                            }
+                        ]
+                    },
+                    "typeParameters": null,
+                    "body": {
+                        "type": "BlockStatement",
+                        "body": [
+                            {
+                                "type": "ReturnStatement",
+                                "argument": {
+                                    "type": "MethodInvocation",
+                                    "callee": {
+                                        "type": "Identifier",
+                                        "name": "MaterialApp"
+                                    },
+                                    "typeArguments": null,
+                                    "argumentList": {
+                                        "type": "ArgumentList",
+                                        "argumentList": [
+                                            {
+                                                "type": "NamedExpression",
+                                                "id": {
+                                                    "type": "Identifier",
+                                                    "name": "title"
+                                                },
+                                                "expression": {
+                                                    "type": "StringLiteral",
+                                                    "value": "Flutter Demo"
+                                                }
+                                            },
+                                            {
+                                                "type": "NamedExpression",
+                                                "id": {
+                                                    "type": "Identifier",
+                                                    "name": "theme"
+                                                },
+                                                "expression": {
+                                                    "type": "MethodInvocation",
+                                                    "callee": {
+                                                        "type": "Identifier",
+                                                        "name": "ThemeData"
+                                                    },
+                                                    "typeArguments": null,
+                                                    "argumentList": {
+                                                        "type": "ArgumentList",
+                                                        "argumentList": [
+                                                            {
+                                                                "type": "NamedExpression",
+                                                                "id": {
+                                                                    "type": "Identifier",
+                                                                    "name": "primarySwatch"
+                                                                },
+                                                                "expression": {
+                                                                    "type": "PrefixedIdentifier",
+                                                                    "identifier": {
+                                                                        "type": "Identifier",
+                                                                        "name": "blue"
+                                                                    },
+                                                                    "prefix": {
+                                                                        "type": "Identifier",
+                                                                        "name": "Colors"
+                                                                    }
+                                                                }
+                                                            }
+                                                        ]
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "type": "NamedExpression",
+                                                "id": {
+                                                    "type": "Identifier",
+                                                    "name": "home"
+                                                },
+                                                "expression": {
+                                                    "type": "MethodInvocation",
+                                                    "callee": {
+                                                        "type": "Identifier",
+                                                        "name": "LayoutBuilder"
+                                                    },
+                                                    "typeArguments": null,
+                                                    "argumentList": {
+                                                        "type": "ArgumentList",
+                                                        "argumentList": [
+                                                            {
+                                                                "type": "NamedExpression",
+                                                                "id": {
+                                                                    "type": "Identifier",
+                                                                    "name": "builder"
+                                                                },
+                                                                "expression": {
+                                                                    "type": "FunctionExpression",
+                                                                    "parameters": {
+                                                                        "type": "FormalParameterList",
+                                                                        "parameterList": [
+                                                                            {
+                                                                                "type": "SimpleFormalParameter",
+                                                                                "paramType": null,
+                                                                                "name": "context"
+                                                                            },
+                                                                            {
+                                                                                "type": "SimpleFormalParameter",
+                                                                                "paramType": null,
+                                                                                "name": "constraints"
+                                                                            }
+                                                                        ]
+                                                                    },
+                                                                    "body": {
+                                                                        "type": "BlockStatement",
+                                                                        "body": [
+                                                                            {
+                                                                                "type": "ReturnStatement",
+                                                                                "argument": {
+                                                                                    "type": "InstanceCreationExpression",
+                                                                                    "name": {
+                                                                                        "type": "Identifier",
+                                                                                        "name": "WebEntry"
+                                                                                    },
+                                                                                    "arguments": [
+                                                                                        {
+                                                                                            "type": "NamedExpression",
+                                                                                            "id": {
+                                                                                                "type": "Identifier",
+                                                                                                "name": "title"
+                                                                                            },
+                                                                                            "expression": {
+                                                                                                "type": "Identifier",
+                                                                                                "name": "title"
+                                                                                            }
+                                                                                        }
+                                                                                    ]
+                                                                                }
+                                                                            }
+                                                                        ]
+                                                                    },
+                                                                    "isAsync": false
+                                                                }
+                                                            }
+                                                        ]
+                                                    }
+                                                }
+                                            }
+                                        ]
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    "isAsync": false,
+                    "returnType": {
+                        "type": "Identifier",
+                        "name": "Widget"
+                    }
+                }
+            ]
+        },
+        {
+            "type": "ClassDeclaration",
+            "id": {
+                "type": "Identifier",
+                "name": "WebEntry"
+            },
+            "superClause": {
+                "type": "Identifier",
+                "name": "StatelessWidget"
+            },
+            "implementsClause": null,
+            "mixinClause": null,
+            "metadata": [],
+            "body": [
+                {
+                    "type": "FieldDeclaration",
+                    "init": {
+                        "type": "VariableDeclarationList",
+                        "typeAnnotation": {
+                            "type": "Identifier",
+                            "name": "String"
+                        },
+                        "declarations": [
+                            {
+                                "type": "VariableDeclarator",
+                                "id": {
+                                    "type": "Identifier",
+                                    "name": "title"
+                                },
+                                "init": null
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": null,
+                    "parameters": {
+                        "type": "FormalParameterList",
+                        "parameterList": []
+                    },
+                    "body": null
+                },
+                {
+                    "type": "MethodDeclaration",
+                    "id": {
+                        "type": "Identifier",
+                        "name": "build"
+                    },
+                    "parameters": {
+                        "type": "FormalParameterList",
+                        "parameterList": [
+                            {
+                                "type": "SimpleFormalParameter",
+                                "paramType": {
+                                    "type": "Identifier",
+                                    "name": "BuildContext"
+                                },
+                                "name": "context"
+                            }
+                        ]
+                    },
+                    "typeParameters": null,
+                    "body": {
+                        "type": "BlockStatement",
+                        "body": [
+                            {
+                                "type": "ReturnStatement",
+                                "argument": {
+                                    "type": "MethodInvocation",
+                                    "callee": {
+                                        "type": "Identifier",
+                                        "name": "Row"
+                                    },
+                                    "typeArguments": null,
+                                    "argumentList": {
+                                        "type": "ArgumentList",
+                                        "argumentList": [
+                                            {
+                                                "type": "NamedExpression",
+                                                "id": {
+                                                    "type": "Identifier",
+                                                    "name": "mainAxisSize"
+                                                },
+                                                "expression": {
+                                                    "type": "PrefixedIdentifier",
+                                                    "identifier": {
+                                                        "type": "Identifier",
+                                                        "name": "max"
+                                                    },
+                                                    "prefix": {
+                                                        "type": "Identifier",
+                                                        "name": "MainAxisSize"
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "type": "NamedExpression",
+                                                "id": {
+                                                    "type": "Identifier",
+                                                    "name": "children"
+                                                },
+                                                "expression": {
+                                                    "type": "ListLiteral",
+                                                    "value": [
+                                                        {
+                                                            "type": "InstanceCreationExpression",
+                                                            "name": {
+                                                                "type": "Identifier",
+                                                                "name": "Text"
+                                                            },
+                                                            "arguments": [
+                                                                {
+                                                                    "type": "StringLiteral",
+                                                                    "value": "hell world"
+                                                                },
+                                                                {
+                                                                    "type": "NamedExpression",
+                                                                    "id": {
+                                                                        "type": "Identifier",
+                                                                        "name": "style"
+                                                                    },
+                                                                    "expression": {
+                                                                        "type": "MethodInvocation",
+                                                                        "callee": {
+                                                                            "type": "Identifier",
+                                                                            "name": "TextStyle"
+                                                                        },
+                                                                        "typeArguments": null,
+                                                                        "argumentList": {
+                                                                            "type": "ArgumentList",
+                                                                            "argumentList": [
+                                                                                {
+                                                                                    "type": "NamedExpression",
+                                                                                    "id": {
+                                                                                        "type": "Identifier",
+                                                                                        "name": "color"
+                                                                                    },
+                                                                                    "expression": {
+                                                                                        "type": "PrefixedIdentifier",
+                                                                                        "identifier": {
+                                                                                            "type": "Identifier",
+                                                                                            "name": "red"
+                                                                                        },
+                                                                                        "prefix": {
+                                                                                            "type": "Identifier",
+                                                                                            "name": "Colors"
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    }
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "type": "InstanceCreationExpression",
+                                                            "name": {
+                                                                "type": "Identifier",
+                                                                "name": "Text"
+                                                            },
+                                                            "arguments": [
+                                                                {
+                                                                    "type": "StringLiteral",
+                                                                    "value": "你好！"
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            }
+                                        ]
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    "isAsync": false,
+                    "returnType": {
+                        "type": "Identifier",
+                        "name": "Widget"
+                    }
+                }
+            ]
+        }
+    ]
+}
