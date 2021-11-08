@@ -1,0 +1,1215 @@
+{
+    "type": "Program",
+    "body": [
+        {
+            "type": "ClassDeclaration",
+            "id": {
+                "type": "Identifier",
+                "name": "Home"
+            },
+            "superClause": {
+                "type": "Identifier",
+                "name": "StatefulWidget"
+            },
+            "implementsClause": null,
+            "mixinClause": null,
+            "metadata": [],
+            "body": [
+                {
+                    "type": "MethodDeclaration",
+                    "id": {
+                        "type": "Identifier",
+                        "name": "createState"
+                    },
+                    "parameters": {
+                        "type": "FormalParameterList",
+                        "parameterList": []
+                    },
+                    "typeParameters": null,
+                    "body": {
+                        "type": "BlockStatement",
+                        "body": [
+                            {
+                                "type": "ReturnStatement",
+                                "argument": {
+                                    "type": "MethodInvocation",
+                                    "callee": {
+                                        "type": "Identifier",
+                                        "name": "HomeState"
+                                    },
+                                    "typeArguments": null,
+                                    "argumentList": {
+                                        "type": "ArgumentList",
+                                        "argumentList": []
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    "isAsync": false,
+                    "returnType": {
+                        "type": "Identifier",
+                        "name": "State"
+                    }
+                }
+            ]
+        },
+        {
+            "type": "ClassDeclaration",
+            "id": {
+                "type": "Identifier",
+                "name": "HomeState"
+            },
+            "superClause": {
+                "type": "Identifier",
+                "name": "State"
+            },
+            "implementsClause": null,
+            "mixinClause": null,
+            "metadata": [],
+            "body": [
+                {
+                    "type": "MethodDeclaration",
+                    "id": {
+                        "type": "Identifier",
+                        "name": "build"
+                    },
+                    "parameters": {
+                        "type": "FormalParameterList",
+                        "parameterList": [
+                            {
+                                "type": "SimpleFormalParameter",
+                                "paramType": {
+                                    "type": "Identifier",
+                                    "name": "BuildContext"
+                                },
+                                "name": "context"
+                            }
+                        ]
+                    },
+                    "typeParameters": null,
+                    "body": {
+                        "type": "BlockStatement",
+                        "body": [
+                            {
+                                "type": "ReturnStatement",
+                                "argument": {
+                                    "type": "MethodInvocation",
+                                    "callee": {
+                                        "type": "Identifier",
+                                        "name": "Scaffold"
+                                    },
+                                    "typeArguments": null,
+                                    "argumentList": {
+                                        "type": "ArgumentList",
+                                        "argumentList": [
+                                            {
+                                                "type": "NamedExpression",
+                                                "id": {
+                                                    "type": "Identifier",
+                                                    "name": "appBar"
+                                                },
+                                                "expression": {
+                                                    "type": "MethodInvocation",
+                                                    "callee": {
+                                                        "type": "Identifier",
+                                                        "name": "AppBar"
+                                                    },
+                                                    "typeArguments": null,
+                                                    "argumentList": {
+                                                        "type": "ArgumentList",
+                                                        "argumentList": [
+                                                            {
+                                                                "type": "NamedExpression",
+                                                                "id": {
+                                                                    "type": "Identifier",
+                                                                    "name": "title"
+                                                                },
+                                                                "expression": {
+                                                                    "type": "InstanceCreationExpression",
+                                                                    "name": {
+                                                                        "type": "Identifier",
+                                                                        "name": "Text"
+                                                                    },
+                                                                    "arguments": [
+                                                                        {
+                                                                            "type": "StringLiteral",
+                                                                            "value": "Demo"
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            }
+                                                        ]
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "type": "NamedExpression",
+                                                "id": {
+                                                    "type": "Identifier",
+                                                    "name": "body"
+                                                },
+                                                "expression": {
+                                                    "type": "MethodInvocation",
+                                                    "callee": {
+                                                        "type": "Identifier",
+                                                        "name": "ListView"
+                                                    },
+                                                    "typeArguments": null,
+                                                    "argumentList": {
+                                                        "type": "ArgumentList",
+                                                        "argumentList": [
+                                                            {
+                                                                "type": "NamedExpression",
+                                                                "id": {
+                                                                    "type": "Identifier",
+                                                                    "name": "children"
+                                                                },
+                                                                "expression": {
+                                                                    "type": "ListLiteral",
+                                                                    "value": [
+                                                                        {
+                                                                            "type": "MethodInvocation",
+                                                                            "callee": {
+                                                                                "type": "Identifier",
+                                                                                "name": "_buildImageSection"
+                                                                            },
+                                                                            "typeArguments": null,
+                                                                            "argumentList": {
+                                                                                "type": "ArgumentList",
+                                                                                "argumentList": []
+                                                                            }
+                                                                        },
+                                                                        {
+                                                                            "type": "MethodInvocation",
+                                                                            "callee": {
+                                                                                "type": "Identifier",
+                                                                                "name": "_buildTitleSection"
+                                                                            },
+                                                                            "typeArguments": null,
+                                                                            "argumentList": {
+                                                                                "type": "ArgumentList",
+                                                                                "argumentList": []
+                                                                            }
+                                                                        },
+                                                                        {
+                                                                            "type": "MethodInvocation",
+                                                                            "callee": {
+                                                                                "type": "Identifier",
+                                                                                "name": "_buttonSection"
+                                                                            },
+                                                                            "typeArguments": null,
+                                                                            "argumentList": {
+                                                                                "type": "ArgumentList",
+                                                                                "argumentList": []
+                                                                            }
+                                                                        },
+                                                                        {
+                                                                            "type": "MethodInvocation",
+                                                                            "callee": {
+                                                                                "type": "Identifier",
+                                                                                "name": "_buildTextSection"
+                                                                            },
+                                                                            "typeArguments": null,
+                                                                            "argumentList": {
+                                                                                "type": "ArgumentList",
+                                                                                "argumentList": []
+                                                                            }
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            }
+                                                        ]
+                                                    }
+                                                }
+                                            }
+                                        ]
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    "isAsync": false,
+                    "returnType": {
+                        "type": "Identifier",
+                        "name": "Widget"
+                    }
+                },
+                {
+                    "type": "MethodDeclaration",
+                    "id": {
+                        "type": "Identifier",
+                        "name": "_buildImageSection"
+                    },
+                    "parameters": {
+                        "type": "FormalParameterList",
+                        "parameterList": []
+                    },
+                    "typeParameters": null,
+                    "body": {
+                        "type": "BlockStatement",
+                        "body": [
+                            {
+                                "type": "ReturnStatement",
+                                "argument": {
+                                    "type": "MethodInvocation",
+                                    "callee": {
+                                        "type": "MemberExpression",
+                                        "object": {
+                                            "type": "Identifier",
+                                            "name": "Image"
+                                        },
+                                        "property": {
+                                            "type": "Identifier",
+                                            "name": "asset"
+                                        }
+                                    },
+                                    "typeArguments": null,
+                                    "argumentList": {
+                                        "type": "ArgumentList",
+                                        "argumentList": [
+                                            {
+                                                "type": "StringLiteral",
+                                                "value": "images/lake.jpg"
+                                            },
+                                            {
+                                                "type": "NamedExpression",
+                                                "id": {
+                                                    "type": "Identifier",
+                                                    "name": "height"
+                                                },
+                                                "expression": {
+                                                    "type": "IntegerLiteral",
+                                                    "value": 240
+                                                }
+                                            },
+                                            {
+                                                "type": "NamedExpression",
+                                                "id": {
+                                                    "type": "Identifier",
+                                                    "name": "fit"
+                                                },
+                                                "expression": {
+                                                    "type": "PrefixedIdentifier",
+                                                    "identifier": {
+                                                        "type": "Identifier",
+                                                        "name": "cover"
+                                                    },
+                                                    "prefix": {
+                                                        "type": "Identifier",
+                                                        "name": "BoxFit"
+                                                    }
+                                                }
+                                            }
+                                        ]
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    "isAsync": false,
+                    "returnType": {
+                        "type": "Identifier",
+                        "name": "Widget"
+                    }
+                },
+                {
+                    "type": "MethodDeclaration",
+                    "id": {
+                        "type": "Identifier",
+                        "name": "_buildTitleSection"
+                    },
+                    "parameters": {
+                        "type": "FormalParameterList",
+                        "parameterList": []
+                    },
+                    "typeParameters": null,
+                    "body": {
+                        "type": "BlockStatement",
+                        "body": [
+                            {
+                                "type": "ReturnStatement",
+                                "argument": {
+                                    "type": "MethodInvocation",
+                                    "callee": {
+                                        "type": "Identifier",
+                                        "name": "Container"
+                                    },
+                                    "typeArguments": null,
+                                    "argumentList": {
+                                        "type": "ArgumentList",
+                                        "argumentList": [
+                                            {
+                                                "type": "NamedExpression",
+                                                "id": {
+                                                    "type": "Identifier",
+                                                    "name": "padding"
+                                                },
+                                                "expression": {
+                                                    "type": "InstanceCreationExpression",
+                                                    "name": {
+                                                        "type": "Identifier",
+                                                        "name": "EdgeInsets.all"
+                                                    },
+                                                    "arguments": [
+                                                        {
+                                                            "type": "IntegerLiteral",
+                                                            "value": 32
+                                                        }
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "type": "NamedExpression",
+                                                "id": {
+                                                    "type": "Identifier",
+                                                    "name": "child"
+                                                },
+                                                "expression": {
+                                                    "type": "MethodInvocation",
+                                                    "callee": {
+                                                        "type": "Identifier",
+                                                        "name": "Row"
+                                                    },
+                                                    "typeArguments": null,
+                                                    "argumentList": {
+                                                        "type": "ArgumentList",
+                                                        "argumentList": [
+                                                            {
+                                                                "type": "NamedExpression",
+                                                                "id": {
+                                                                    "type": "Identifier",
+                                                                    "name": "children"
+                                                                },
+                                                                "expression": {
+                                                                    "type": "ListLiteral",
+                                                                    "value": [
+                                                                        {
+                                                                            "type": "MethodInvocation",
+                                                                            "callee": {
+                                                                                "type": "Identifier",
+                                                                                "name": "Expanded"
+                                                                            },
+                                                                            "typeArguments": null,
+                                                                            "argumentList": {
+                                                                                "type": "ArgumentList",
+                                                                                "argumentList": [
+                                                                                    {
+                                                                                        "type": "NamedExpression",
+                                                                                        "id": {
+                                                                                            "type": "Identifier",
+                                                                                            "name": "child"
+                                                                                        },
+                                                                                        "expression": {
+                                                                                            "type": "MethodInvocation",
+                                                                                            "callee": {
+                                                                                                "type": "Identifier",
+                                                                                                "name": "Column"
+                                                                                            },
+                                                                                            "typeArguments": null,
+                                                                                            "argumentList": {
+                                                                                                "type": "ArgumentList",
+                                                                                                "argumentList": [
+                                                                                                    {
+                                                                                                        "type": "NamedExpression",
+                                                                                                        "id": {
+                                                                                                            "type": "Identifier",
+                                                                                                            "name": "crossAxisAlignment"
+                                                                                                        },
+                                                                                                        "expression": {
+                                                                                                            "type": "PrefixedIdentifier",
+                                                                                                            "identifier": {
+                                                                                                                "type": "Identifier",
+                                                                                                                "name": "start"
+                                                                                                            },
+                                                                                                            "prefix": {
+                                                                                                                "type": "Identifier",
+                                                                                                                "name": "CrossAxisAlignment"
+                                                                                                            }
+                                                                                                        }
+                                                                                                    },
+                                                                                                    {
+                                                                                                        "type": "NamedExpression",
+                                                                                                        "id": {
+                                                                                                            "type": "Identifier",
+                                                                                                            "name": "children"
+                                                                                                        },
+                                                                                                        "expression": {
+                                                                                                            "type": "ListLiteral",
+                                                                                                            "value": [
+                                                                                                                {
+                                                                                                                    "type": "MethodInvocation",
+                                                                                                                    "callee": {
+                                                                                                                        "type": "Identifier",
+                                                                                                                        "name": "Container"
+                                                                                                                    },
+                                                                                                                    "typeArguments": null,
+                                                                                                                    "argumentList": {
+                                                                                                                        "type": "ArgumentList",
+                                                                                                                        "argumentList": [
+                                                                                                                            {
+                                                                                                                                "type": "NamedExpression",
+                                                                                                                                "id": {
+                                                                                                                                    "type": "Identifier",
+                                                                                                                                    "name": "padding"
+                                                                                                                                },
+                                                                                                                                "expression": {
+                                                                                                                                    "type": "InstanceCreationExpression",
+                                                                                                                                    "name": {
+                                                                                                                                        "type": "Identifier",
+                                                                                                                                        "name": "EdgeInsets.only"
+                                                                                                                                    },
+                                                                                                                                    "arguments": [
+                                                                                                                                        {
+                                                                                                                                            "type": "NamedExpression",
+                                                                                                                                            "id": {
+                                                                                                                                                "type": "Identifier",
+                                                                                                                                                "name": "bottom"
+                                                                                                                                            },
+                                                                                                                                            "expression": {
+                                                                                                                                                "type": "IntegerLiteral",
+                                                                                                                                                "value": 8
+                                                                                                                                            }
+                                                                                                                                        }
+                                                                                                                                    ]
+                                                                                                                                }
+                                                                                                                            },
+                                                                                                                            {
+                                                                                                                                "type": "NamedExpression",
+                                                                                                                                "id": {
+                                                                                                                                    "type": "Identifier",
+                                                                                                                                    "name": "child"
+                                                                                                                                },
+                                                                                                                                "expression": {
+                                                                                                                                    "type": "InstanceCreationExpression",
+                                                                                                                                    "name": {
+                                                                                                                                        "type": "Identifier",
+                                                                                                                                        "name": "Text"
+                                                                                                                                    },
+                                                                                                                                    "arguments": [
+                                                                                                                                        {
+                                                                                                                                            "type": "StringLiteral",
+                                                                                                                                            "value": "Oeschinen Lake Campground"
+                                                                                                                                        },
+                                                                                                                                        {
+                                                                                                                                            "type": "NamedExpression",
+                                                                                                                                            "id": {
+                                                                                                                                                "type": "Identifier",
+                                                                                                                                                "name": "style"
+                                                                                                                                            },
+                                                                                                                                            "expression": {
+                                                                                                                                                "type": "MethodInvocation",
+                                                                                                                                                "callee": {
+                                                                                                                                                    "type": "Identifier",
+                                                                                                                                                    "name": "TextStyle"
+                                                                                                                                                },
+                                                                                                                                                "typeArguments": null,
+                                                                                                                                                "argumentList": {
+                                                                                                                                                    "type": "ArgumentList",
+                                                                                                                                                    "argumentList": [
+                                                                                                                                                        {
+                                                                                                                                                            "type": "NamedExpression",
+                                                                                                                                                            "id": {
+                                                                                                                                                                "type": "Identifier",
+                                                                                                                                                                "name": "fontWeight"
+                                                                                                                                                            },
+                                                                                                                                                            "expression": {
+                                                                                                                                                                "type": "PrefixedIdentifier",
+                                                                                                                                                                "identifier": {
+                                                                                                                                                                    "type": "Identifier",
+                                                                                                                                                                    "name": "bold"
+                                                                                                                                                                },
+                                                                                                                                                                "prefix": {
+                                                                                                                                                                    "type": "Identifier",
+                                                                                                                                                                    "name": "FontWeight"
+                                                                                                                                                                }
+                                                                                                                                                            }
+                                                                                                                                                        }
+                                                                                                                                                    ]
+                                                                                                                                                }
+                                                                                                                                            }
+                                                                                                                                        }
+                                                                                                                                    ]
+                                                                                                                                }
+                                                                                                                            }
+                                                                                                                        ]
+                                                                                                                    }
+                                                                                                                },
+                                                                                                                {
+                                                                                                                    "type": "InstanceCreationExpression",
+                                                                                                                    "name": {
+                                                                                                                        "type": "Identifier",
+                                                                                                                        "name": "Text"
+                                                                                                                    },
+                                                                                                                    "arguments": [
+                                                                                                                        {
+                                                                                                                            "type": "StringLiteral",
+                                                                                                                            "value": "Kandersteg, Switzerland"
+                                                                                                                        },
+                                                                                                                        {
+                                                                                                                            "type": "NamedExpression",
+                                                                                                                            "id": {
+                                                                                                                                "type": "Identifier",
+                                                                                                                                "name": "style"
+                                                                                                                            },
+                                                                                                                            "expression": {
+                                                                                                                                "type": "MethodInvocation",
+                                                                                                                                "callee": {
+                                                                                                                                    "type": "Identifier",
+                                                                                                                                    "name": "TextStyle"
+                                                                                                                                },
+                                                                                                                                "typeArguments": null,
+                                                                                                                                "argumentList": {
+                                                                                                                                    "type": "ArgumentList",
+                                                                                                                                    "argumentList": [
+                                                                                                                                        {
+                                                                                                                                            "type": "NamedExpression",
+                                                                                                                                            "id": {
+                                                                                                                                                "type": "Identifier",
+                                                                                                                                                "name": "color"
+                                                                                                                                            },
+                                                                                                                                            "expression": {
+                                                                                                                                                "type": "PrefixedIdentifier",
+                                                                                                                                                "identifier": {
+                                                                                                                                                    "type": "Identifier",
+                                                                                                                                                    "name": "grey"
+                                                                                                                                                },
+                                                                                                                                                "prefix": {
+                                                                                                                                                    "type": "Identifier",
+                                                                                                                                                    "name": "Colors"
+                                                                                                                                                }
+                                                                                                                                            }
+                                                                                                                                        }
+                                                                                                                                    ]
+                                                                                                                                }
+                                                                                                                            }
+                                                                                                                        }
+                                                                                                                    ]
+                                                                                                                }
+                                                                                                            ]
+                                                                                                        }
+                                                                                                    }
+                                                                                                ]
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                ]
+                                                                            }
+                                                                        },
+                                                                        {
+                                                                            "type": "InstanceCreationExpression",
+                                                                            "name": {
+                                                                                "type": "Identifier",
+                                                                                "name": "Icon"
+                                                                            },
+                                                                            "arguments": [
+                                                                                {
+                                                                                    "type": "PrefixedIdentifier",
+                                                                                    "identifier": {
+                                                                                        "type": "Identifier",
+                                                                                        "name": "star"
+                                                                                    },
+                                                                                    "prefix": {
+                                                                                        "type": "Identifier",
+                                                                                        "name": "Icons"
+                                                                                    }
+                                                                                },
+                                                                                {
+                                                                                    "type": "NamedExpression",
+                                                                                    "id": {
+                                                                                        "type": "Identifier",
+                                                                                        "name": "color"
+                                                                                    },
+                                                                                    "expression": {
+                                                                                        "type": "PrefixedIdentifier",
+                                                                                        "identifier": {
+                                                                                            "type": "Identifier",
+                                                                                            "name": "red"
+                                                                                        },
+                                                                                        "prefix": {
+                                                                                            "type": "Identifier",
+                                                                                            "name": "Colors"
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            ]
+                                                                        },
+                                                                        {
+                                                                            "type": "InstanceCreationExpression",
+                                                                            "name": {
+                                                                                "type": "Identifier",
+                                                                                "name": "Text"
+                                                                            },
+                                                                            "arguments": [
+                                                                                {
+                                                                                    "type": "StringLiteral",
+                                                                                    "value": "41"
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            }
+                                                        ]
+                                                    }
+                                                }
+                                            }
+                                        ]
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    "isAsync": false,
+                    "returnType": {
+                        "type": "Identifier",
+                        "name": "Widget"
+                    }
+                },
+                {
+                    "type": "MethodDeclaration",
+                    "id": {
+                        "type": "Identifier",
+                        "name": "_buttonSection"
+                    },
+                    "parameters": {
+                        "type": "FormalParameterList",
+                        "parameterList": []
+                    },
+                    "typeParameters": null,
+                    "body": {
+                        "type": "BlockStatement",
+                        "body": [
+                            {
+                                "type": "ReturnStatement",
+                                "argument": {
+                                    "type": "MethodInvocation",
+                                    "callee": {
+                                        "type": "Identifier",
+                                        "name": "Row"
+                                    },
+                                    "typeArguments": null,
+                                    "argumentList": {
+                                        "type": "ArgumentList",
+                                        "argumentList": [
+                                            {
+                                                "type": "NamedExpression",
+                                                "id": {
+                                                    "type": "Identifier",
+                                                    "name": "mainAxisAlignment"
+                                                },
+                                                "expression": {
+                                                    "type": "PrefixedIdentifier",
+                                                    "identifier": {
+                                                        "type": "Identifier",
+                                                        "name": "spaceEvenly"
+                                                    },
+                                                    "prefix": {
+                                                        "type": "Identifier",
+                                                        "name": "MainAxisAlignment"
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "type": "NamedExpression",
+                                                "id": {
+                                                    "type": "Identifier",
+                                                    "name": "children"
+                                                },
+                                                "expression": {
+                                                    "type": "ListLiteral",
+                                                    "value": [
+                                                        {
+                                                            "type": "MethodInvocation",
+                                                            "callee": {
+                                                                "type": "Identifier",
+                                                                "name": "_buildButton"
+                                                            },
+                                                            "typeArguments": null,
+                                                            "argumentList": {
+                                                                "type": "ArgumentList",
+                                                                "argumentList": [
+                                                                    {
+                                                                        "type": "PrefixedIdentifier",
+                                                                        "identifier": {
+                                                                            "type": "Identifier",
+                                                                            "name": "call"
+                                                                        },
+                                                                        "prefix": {
+                                                                            "type": "Identifier",
+                                                                            "name": "Icons"
+                                                                        }
+                                                                    },
+                                                                    {
+                                                                        "type": "StringLiteral",
+                                                                        "value": "CALL"
+                                                                    }
+                                                                ]
+                                                            }
+                                                        },
+                                                        {
+                                                            "type": "MethodInvocation",
+                                                            "callee": {
+                                                                "type": "Identifier",
+                                                                "name": "_buildButton"
+                                                            },
+                                                            "typeArguments": null,
+                                                            "argumentList": {
+                                                                "type": "ArgumentList",
+                                                                "argumentList": [
+                                                                    {
+                                                                        "type": "PrefixedIdentifier",
+                                                                        "identifier": {
+                                                                            "type": "Identifier",
+                                                                            "name": "near_me"
+                                                                        },
+                                                                        "prefix": {
+                                                                            "type": "Identifier",
+                                                                            "name": "Icons"
+                                                                        }
+                                                                    },
+                                                                    {
+                                                                        "type": "StringLiteral",
+                                                                        "value": "ROUTE"
+                                                                    }
+                                                                ]
+                                                            }
+                                                        },
+                                                        {
+                                                            "type": "MethodInvocation",
+                                                            "callee": {
+                                                                "type": "Identifier",
+                                                                "name": "_buildButton"
+                                                            },
+                                                            "typeArguments": null,
+                                                            "argumentList": {
+                                                                "type": "ArgumentList",
+                                                                "argumentList": [
+                                                                    {
+                                                                        "type": "PrefixedIdentifier",
+                                                                        "identifier": {
+                                                                            "type": "Identifier",
+                                                                            "name": "share"
+                                                                        },
+                                                                        "prefix": {
+                                                                            "type": "Identifier",
+                                                                            "name": "Icons"
+                                                                        }
+                                                                    },
+                                                                    {
+                                                                        "type": "StringLiteral",
+                                                                        "value": "SHARE"
+                                                                    }
+                                                                ]
+                                                            }
+                                                        }
+                                                    ]
+                                                }
+                                            }
+                                        ]
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    "isAsync": false,
+                    "returnType": {
+                        "type": "Identifier",
+                        "name": "Widget"
+                    }
+                },
+                {
+                    "type": "MethodDeclaration",
+                    "id": {
+                        "type": "Identifier",
+                        "name": "_buildTextSection"
+                    },
+                    "parameters": {
+                        "type": "FormalParameterList",
+                        "parameterList": []
+                    },
+                    "typeParameters": null,
+                    "body": {
+                        "type": "BlockStatement",
+                        "body": [
+                            {
+                                "type": "ReturnStatement",
+                                "argument": {
+                                    "type": "MethodInvocation",
+                                    "callee": {
+                                        "type": "Identifier",
+                                        "name": "Container"
+                                    },
+                                    "typeArguments": null,
+                                    "argumentList": {
+                                        "type": "ArgumentList",
+                                        "argumentList": [
+                                            {
+                                                "type": "NamedExpression",
+                                                "id": {
+                                                    "type": "Identifier",
+                                                    "name": "padding"
+                                                },
+                                                "expression": {
+                                                    "type": "InstanceCreationExpression",
+                                                    "name": {
+                                                        "type": "Identifier",
+                                                        "name": "EdgeInsets.all"
+                                                    },
+                                                    "arguments": [
+                                                        {
+                                                            "type": "IntegerLiteral",
+                                                            "value": 32
+                                                        }
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "type": "NamedExpression",
+                                                "id": {
+                                                    "type": "Identifier",
+                                                    "name": "child"
+                                                },
+                                                "expression": {
+                                                    "type": "InstanceCreationExpression",
+                                                    "name": {
+                                                        "type": "Identifier",
+                                                        "name": "Text"
+                                                    },
+                                                    "arguments": [
+                                                        {
+                                                            "type": "StringLiteral",
+                                                            "value": "        Lake Oeschinen lies at the foot of the Blüemlisalp in the Bernese Alps. Situated 1,578 meters above sea level, it is one of the larger Alpine Lakes. A gondola ride from Kandersteg, followed by a half-hour walk through pastures and pine forest, leads you to the lake, which warms to 20 degrees Celsius in the summer. Activities enjoyed here include rowing, and riding the summer toboggan run.\n        "
+                                                        },
+                                                        {
+                                                            "type": "NamedExpression",
+                                                            "id": {
+                                                                "type": "Identifier",
+                                                                "name": "softWrap"
+                                                            },
+                                                            "expression": {
+                                                                "type": "BooleanLiteral",
+                                                                "value": true
+                                                            }
+                                                        }
+                                                    ]
+                                                }
+                                            }
+                                        ]
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    "isAsync": false,
+                    "returnType": {
+                        "type": "Identifier",
+                        "name": "Widget"
+                    }
+                },
+                {
+                    "type": "MethodDeclaration",
+                    "id": {
+                        "type": "Identifier",
+                        "name": "_buildButton"
+                    },
+                    "parameters": {
+                        "type": "FormalParameterList",
+                        "parameterList": [
+                            {
+                                "type": "SimpleFormalParameter",
+                                "paramType": {
+                                    "type": "Identifier",
+                                    "name": "IconData"
+                                },
+                                "name": "icon"
+                            },
+                            {
+                                "type": "SimpleFormalParameter",
+                                "paramType": {
+                                    "type": "Identifier",
+                                    "name": "String"
+                                },
+                                "name": "label"
+                            }
+                        ]
+                    },
+                    "typeParameters": null,
+                    "body": {
+                        "type": "BlockStatement",
+                        "body": [
+                            {
+                                "type": "VariableDeclarationList",
+                                "typeAnnotation": {
+                                    "type": "Identifier",
+                                    "name": "Color"
+                                },
+                                "declarations": [
+                                    {
+                                        "type": "VariableDeclarator",
+                                        "id": {
+                                            "type": "Identifier",
+                                            "name": "color"
+                                        },
+                                        "init": {
+                                            "type": "PropertyAccess",
+                                            "id": {
+                                                "type": "Identifier",
+                                                "name": "primaryColor"
+                                            },
+                                            "expression": {
+                                                "type": "MethodInvocation",
+                                                "callee": {
+                                                    "type": "MemberExpression",
+                                                    "object": {
+                                                        "type": "Identifier",
+                                                        "name": "Theme"
+                                                    },
+                                                    "property": {
+                                                        "type": "Identifier",
+                                                        "name": "of"
+                                                    }
+                                                },
+                                                "typeArguments": null,
+                                                "argumentList": {
+                                                    "type": "ArgumentList",
+                                                    "argumentList": [
+                                                        {
+                                                            "type": "Identifier",
+                                                            "name": "context"
+                                                        }
+                                                    ]
+                                                }
+                                            }
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "ReturnStatement",
+                                "argument": {
+                                    "type": "MethodInvocation",
+                                    "callee": {
+                                        "type": "Identifier",
+                                        "name": "Column"
+                                    },
+                                    "typeArguments": null,
+                                    "argumentList": {
+                                        "type": "ArgumentList",
+                                        "argumentList": [
+                                            {
+                                                "type": "NamedExpression",
+                                                "id": {
+                                                    "type": "Identifier",
+                                                    "name": "mainAxisSize"
+                                                },
+                                                "expression": {
+                                                    "type": "PrefixedIdentifier",
+                                                    "identifier": {
+                                                        "type": "Identifier",
+                                                        "name": "min"
+                                                    },
+                                                    "prefix": {
+                                                        "type": "Identifier",
+                                                        "name": "MainAxisSize"
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "type": "NamedExpression",
+                                                "id": {
+                                                    "type": "Identifier",
+                                                    "name": "mainAxisAlignment"
+                                                },
+                                                "expression": {
+                                                    "type": "PrefixedIdentifier",
+                                                    "identifier": {
+                                                        "type": "Identifier",
+                                                        "name": "center"
+                                                    },
+                                                    "prefix": {
+                                                        "type": "Identifier",
+                                                        "name": "MainAxisAlignment"
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "type": "NamedExpression",
+                                                "id": {
+                                                    "type": "Identifier",
+                                                    "name": "children"
+                                                },
+                                                "expression": {
+                                                    "type": "ListLiteral",
+                                                    "value": [
+                                                        {
+                                                            "type": "MethodInvocation",
+                                                            "callee": {
+                                                                "type": "Identifier",
+                                                                "name": "Icon"
+                                                            },
+                                                            "typeArguments": null,
+                                                            "argumentList": {
+                                                                "type": "ArgumentList",
+                                                                "argumentList": [
+                                                                    {
+                                                                        "type": "Identifier",
+                                                                        "name": "icon"
+                                                                    },
+                                                                    {
+                                                                        "type": "NamedExpression",
+                                                                        "id": {
+                                                                            "type": "Identifier",
+                                                                            "name": "color"
+                                                                        },
+                                                                        "expression": {
+                                                                            "type": "Identifier",
+                                                                            "name": "color"
+                                                                        }
+                                                                    }
+                                                                ]
+                                                            }
+                                                        },
+                                                        {
+                                                            "type": "MethodInvocation",
+                                                            "callee": {
+                                                                "type": "Identifier",
+                                                                "name": "Container"
+                                                            },
+                                                            "typeArguments": null,
+                                                            "argumentList": {
+                                                                "type": "ArgumentList",
+                                                                "argumentList": [
+                                                                    {
+                                                                        "type": "NamedExpression",
+                                                                        "id": {
+                                                                            "type": "Identifier",
+                                                                            "name": "margin"
+                                                                        },
+                                                                        "expression": {
+                                                                            "type": "InstanceCreationExpression",
+                                                                            "name": {
+                                                                                "type": "Identifier",
+                                                                                "name": "EdgeInsets.only"
+                                                                            },
+                                                                            "arguments": [
+                                                                                {
+                                                                                    "type": "NamedExpression",
+                                                                                    "id": {
+                                                                                        "type": "Identifier",
+                                                                                        "name": "top"
+                                                                                    },
+                                                                                    "expression": {
+                                                                                        "type": "DoubleLiteral",
+                                                                                        "value": 8.0
+                                                                                    }
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    },
+                                                                    {
+                                                                        "type": "NamedExpression",
+                                                                        "id": {
+                                                                            "type": "Identifier",
+                                                                            "name": "child"
+                                                                        },
+                                                                        "expression": {
+                                                                            "type": "MethodInvocation",
+                                                                            "callee": {
+                                                                                "type": "Identifier",
+                                                                                "name": "Text"
+                                                                            },
+                                                                            "typeArguments": null,
+                                                                            "argumentList": {
+                                                                                "type": "ArgumentList",
+                                                                                "argumentList": [
+                                                                                    {
+                                                                                        "type": "Identifier",
+                                                                                        "name": "label"
+                                                                                    },
+                                                                                    {
+                                                                                        "type": "NamedExpression",
+                                                                                        "id": {
+                                                                                            "type": "Identifier",
+                                                                                            "name": "style"
+                                                                                        },
+                                                                                        "expression": {
+                                                                                            "type": "MethodInvocation",
+                                                                                            "callee": {
+                                                                                                "type": "Identifier",
+                                                                                                "name": "TextStyle"
+                                                                                            },
+                                                                                            "typeArguments": null,
+                                                                                            "argumentList": {
+                                                                                                "type": "ArgumentList",
+                                                                                                "argumentList": [
+                                                                                                    {
+                                                                                                        "type": "NamedExpression",
+                                                                                                        "id": {
+                                                                                                            "type": "Identifier",
+                                                                                                            "name": "fontSize"
+                                                                                                        },
+                                                                                                        "expression": {
+                                                                                                            "type": "DoubleLiteral",
+                                                                                                            "value": 12.0
+                                                                                                        }
+                                                                                                    },
+                                                                                                    {
+                                                                                                        "type": "NamedExpression",
+                                                                                                        "id": {
+                                                                                                            "type": "Identifier",
+                                                                                                            "name": "fontWeight"
+                                                                                                        },
+                                                                                                        "expression": {
+                                                                                                            "type": "PrefixedIdentifier",
+                                                                                                            "identifier": {
+                                                                                                                "type": "Identifier",
+                                                                                                                "name": "w400"
+                                                                                                            },
+                                                                                                            "prefix": {
+                                                                                                                "type": "Identifier",
+                                                                                                                "name": "FontWeight"
+                                                                                                            }
+                                                                                                        }
+                                                                                                    },
+                                                                                                    {
+                                                                                                        "type": "NamedExpression",
+                                                                                                        "id": {
+                                                                                                            "type": "Identifier",
+                                                                                                            "name": "color"
+                                                                                                        },
+                                                                                                        "expression": {
+                                                                                                            "type": "Identifier",
+                                                                                                            "name": "color"
+                                                                                                        }
+                                                                                                    }
+                                                                                                ]
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                ]
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                ]
+                                                            }
+                                                        }
+                                                    ]
+                                                }
+                                            }
+                                        ]
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    "isAsync": false,
+                    "returnType": {
+                        "type": "Identifier",
+                        "name": "Column"
+                    }
+                }
+            ]
+        }
+    ]
+}

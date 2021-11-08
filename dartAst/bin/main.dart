@@ -14,7 +14,7 @@ void main(List<String> arguments) async {
   sps.removeLast();sps.removeLast();
   path = sps.join("/");
 
-  arguments = ["-f", path +"/testfile/uitest.dart"];
+  arguments = ["-f", path +"/testfile/demoui.dart"];
   print(path);
   final parser = ArgParser()..addFlag("file", negatable: false, abbr: 'f');
   var argResults = parser.parse(arguments);
@@ -23,8 +23,8 @@ void main(List<String> arguments) async {
     stdout.writeln('No file found');
   } else {
     var data = await generate(paths[0]);
-    ParserDartAst ast = ParserDartAst(data);
-    List<AstNode> asts = ast.prog();
+    // ParserDartAst ast = ParserDartAst(data);
+    // List<AstNode> asts = ast.prog();
   }
 }
 
