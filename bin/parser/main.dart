@@ -4,9 +4,7 @@ import 'package:analyzer/dart/analysis/features.dart';
 import 'package:analyzer/dart/analysis/utilities.dart';
 import 'package:args/args.dart';
 import 'DartAstParser.dart';
-import 'ParserDartAst.dart';
-import 'AstNode.dart';
-import 'AstVisitor.dart';
+
 
 void main(List<String> arguments) async {
   String path = Platform.script.toFilePath();

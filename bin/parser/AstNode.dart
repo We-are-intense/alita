@@ -208,5 +208,9 @@ class ClassDeclaration extends Statement {
   List<VariableDecl>? fields;
   List<FunctionDecl>? methods;
   ClassDeclaration(this.name, this.superName, this.fields, this.methods);
+  @override
+  accept(AstVisitor visitor, {additional}) {
+    return visitor.visitClassDeclaration(this, additional: additional);
+  }
 }
 

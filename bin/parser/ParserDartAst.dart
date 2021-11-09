@@ -1,7 +1,8 @@
+import '../dart2wx/dart2wx.dart';
 import 'AstNode.dart';
 import 'dart:io';
 import 'dart:convert' as convert;
-import 'VisitDartAst.dart';
+
 class ParserDartAst {
   Map ast = {};
   Map<String, Function> strategy = {};
@@ -246,7 +247,7 @@ class ParserDartAst {
     return FunctionCall(name?.value, args,callee);
   }
 
-  Binary? parserMemberExpression(Map bb) {
+  Expression? parserMemberExpression(Map bb) {
     return strategyFunc(bb["object"]);
   }
 
@@ -351,14 +352,14 @@ class ParserDartAst {
 void main() async {
   String path = Platform.script.toFilePath();
   List<String> sps = path.split("/");
-  sps.removeLast();sps.removeLast();
+  sps.removeLast();sps.removeLast();sps.removeLast();
   path = sps.join("/");
-  File file = new File(path + "/testfile/uitest.json");
+  File file = new File(path + "/testfile/demoui.json");
   String content = await file.readAsString();
   Map mc = convert.jsonDecode(content);
   ParserDartAst ast = ParserDartAst(mc);
   List<AstNode> stmts = ast.prog();
-  VisitDartAst().prog(stmts);
+  Dart2wx().prog(stmts);
   print("done");
 
 }

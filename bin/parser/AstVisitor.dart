@@ -100,5 +100,23 @@ class AstVisitor {
     return null;
   }
 
-  
+  dynamic visitClassDeclaration(ClassDeclaration node, {dynamic additional}) {
+    /*
+      String name;
+      String? superName;
+      List<VariableDecl>? fields;
+      List<FunctionDecl>? methods;
+    */
+    if(node.fields != null) {
+      for (AstNode item in node.fields!) {
+        visit(item, additional: additional);
+      }
+    }
+    if(node.methods != null) {
+      for (AstNode item in node.methods!) {
+        visit(item, additional: additional);
+      }
+    }
+    return null;
+  }  
 }
